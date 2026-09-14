@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.codingbattle.controller.LoginController"
+           styleClass="main-window" prefWidth="1200.0" prefHeight="780.0">
+
+    <VBox alignment="CENTER" spacing="20.0" maxWidth="480.0">
+        <!-- Logo & Branding -->
+        <VBox alignment="CENTER" spacing="6.0">
+            <Label text="⚡ CODING BATTLE" styleClass="heading-large" style="-fx-font-size: 30px; -fx-text-fill: #58a6ff;"/>
+            <Label text="Interactive Java Programming Competition System" styleClass="subheading" style="-fx-font-size: 14px;"/>
+        </VBox>
+
+        <!-- Auth Card -->
+        <VBox styleClass="card" spacing="16.0">
+            <TabPane fx:id="authTabPane" tabClosingPolicy="UNAVAILABLE">
+                <!-- Sign In Tab -->
+                <Tab text="Sign In">
+                    <VBox spacing="14.0">
+                        <padding>
+                            <Insets top="16.0" bottom="8.0" left="4.0" right="4.0"/>
+                        </padding>
+
+                        <VBox spacing="6.0">
+                            <Label text="Username" styleClass="card-stat-label"/>
+                            <TextField fx:id="loginUsernameField" promptText="Enter your username"/>
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Password" styleClass="card-stat-label"/>
+                            <PasswordField fx:id="loginPasswordField" promptText="Enter your password"/>
+                        </VBox>
+
+                        <Label fx:id="loginMessageLabel" wrapText="true"/>
+
+                        <Button text="Sign In" onAction="#handleLogin" maxWidth="Infinity" styleClass="btn-primary" style="-fx-font-size: 14px; -fx-padding: 10;"/>
+
+                        <!-- Demo helpers for quick viva testing -->
+                        <Separator style="-fx-background-color: #30363d;"/>
+                        <Label text="Quick Demo Credentials:" styleClass="card-stat-label"/>
+                        <HBox spacing="10.0">
+                            <Button text="Student Demo (rahul)" onAction="#fillStudentDemo" HBox.hgrow="ALWAYS" maxWidth="Infinity" style="-fx-font-size: 11px;"/>
+                            <Button text="Admin Demo (admin)" onAction="#fillAdminDemo" HBox.hgrow="ALWAYS" maxWidth="Infinity" style="-fx-font-size: 11px;"/>
+                        </HBox>
+                    </VBox>
+                </Tab>
+
+                <!-- Register Tab -->
+                <Tab text="Create Account">
+                    <VBox spacing="12.0">
+                        <padding>
+                            <Insets top="16.0" bottom="8.0" left="4.0" right="4.0"/>
+                        </padding>
+
+                        <VBox spacing="6.0">
+                            <Label text="Username" styleClass="card-stat-label"/>
+                            <TextField fx:id="regUsernameField" promptText="Choose a unique username"/>
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Email Address" styleClass="card-stat-label"/>
+                            <TextField fx:id="regEmailField" promptText="e.g. student@college.edu"/>
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Password" styleClass="card-stat-label"/>
+                            <PasswordField fx:id="regPasswordField" promptText="At least 4 characters"/>
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Confirm Password" styleClass="card-stat-label"/>
+                            <PasswordField fx:id="regConfirmPasswordField" promptText="Re-enter password"/>
+                        </VBox>
+
+                        <Label fx:id="regMessageLabel" wrapText="true"/>
+
+                        <Button text="Register as Student" onAction="#handleRegister" maxWidth="Infinity" styleClass="btn-accent" style="-fx-font-size: 14px; -fx-padding: 10;"/>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+
+        <!-- Database Connection Indicator -->
+        <HBox alignment="CENTER" spacing="8.0">
+            <Label text="●" style="-fx-text-fill: #3fb950; -fx-font-size: 14px;"/>
+            <Label fx:id="dbStatusLabel" text="Database: Initializing..." styleClass="subheading"/>
+        </HBox>
+    </VBox>
+</StackPane>

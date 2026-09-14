@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.codingbattle.controller.StudentMainController"
+            styleClass="main-window" prefWidth="1200.0" prefHeight="780.0">
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="250.0" spacing="12.0">
+            <!-- App Brand -->
+            <VBox spacing="4.0">
+                <padding>
+                    <Insets bottom="14.0"/>
+                </padding>
+                <Label text="⚡ CODING BATTLE" styleClass="heading-large" style="-fx-font-size: 20px; -fx-text-fill: #58a6ff;"/>
+                <Label text="Student Arena" styleClass="subheading" style="-fx-font-size: 11px;"/>
+            </VBox>
+
+            <!-- Student Profile Summary Card -->
+            <VBox styleClass="card" spacing="6.0" style="-fx-padding: 12px; -fx-background-color: #0d1117;">
+                <Label text="CURRENT CODER" styleClass="card-stat-label" style="-fx-font-size: 10px;"/>
+                <Label fx:id="studentUsernameLabel" text="Student" styleClass="heading-medium" style="-fx-font-size: 15px;"/>
+                <Label fx:id="studentPointsBadge" text="⭐ 0 pts" styleClass="badge-pill, badge-easy" style="-fx-alignment: CENTER;"/>
+            </VBox>
+
+            <Separator style="-fx-background-color: #30363d;"/>
+
+            <!-- Navigation Links -->
+            <VBox spacing="6.0" VBox.vgrow="ALWAYS">
+                <Button fx:id="navDashboardBtn" text="📊   Dashboard" onAction="#handleNavDashboard" maxWidth="Infinity" styleClass="sidebar-btn"/>
+                <Button fx:id="navPracticeBtn" text="💻   Practice Problems" onAction="#handleNavPractice" maxWidth="Infinity" styleClass="sidebar-btn"/>
+                <Button fx:id="navBattlesBtn" text="⚔️   Coding Battles" onAction="#handleNavBattles" maxWidth="Infinity" styleClass="sidebar-btn"/>
+                <Button fx:id="navLeaderboardBtn" text="🏆   Leaderboard" onAction="#handleNavLeaderboard" maxWidth="Infinity" styleClass="sidebar-btn"/>
+                <Button fx:id="navPerformanceBtn" text="📈   My Performance &amp; Badges" onAction="#handleNavPerformance" maxWidth="Infinity" styleClass="sidebar-btn"/>
+            </VBox>
+
+            <!-- Logout at bottom -->
+            <VBox spacing="8.0">
+                <Separator style="-fx-background-color: #30363d;"/>
+                <Button text="🚪   Sign Out" onAction="#handleLogout" maxWidth="Infinity" styleClass="sidebar-btn" style="-fx-text-fill: #f85149;"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Center Dynamic Content Area -->
+    <center>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #0d1117;">
+            <padding>
+                <Insets top="20.0" right="24.0" bottom="20.0" left="24.0"/>
+            </padding>
+        </StackPane>
+    </center>
+</BorderPane>

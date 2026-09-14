@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.codingbattle.controller.StudentDashboardController"
+      spacing="20.0">
+
+    <!-- Header Greeting -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="welcomeLabel" text="Welcome back, Student!" styleClass="heading-large"/>
+            <Label text="Track your coding milestones, active battles, and submissions." styleClass="subheading"/>
+        </VBox>
+
+        <HBox spacing="10.0">
+            <Button text="💻 Practice Problems" onAction="#handleQuickPractice" styleClass="btn-primary"/>
+            <Button text="🏆 Leaderboard" onAction="#handleQuickLeaderboard" styleClass="button"/>
+        </HBox>
+    </HBox>
+
+    <!-- Live Battle Announcement Banner -->
+    <HBox fx:id="liveBattleBanner" alignment="CENTER_LEFT" spacing="16.0" style="-fx-background-color: rgba(46, 160, 67, 0.15); -fx-border-color: #2ea043; -fx-border-radius: 8px; -fx-padding: 12 16 12 16;">
+        <Label text="LIVE CONTEST" styleClass="badge-pill, badge-live"/>
+        <Label fx:id="liveBattleTitleLabel" text="⚔️ Java Speed Battle #05 is Live!" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="joinLiveBattleBtn" text="Enter Arena" onAction="#handleJoinLiveBattle" styleClass="btn-primary"/>
+    </HBox>
+
+    <!-- 4 Stats Cards -->
+    <HBox spacing="16.0">
+        <!-- Solved Problems Card -->
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="SOLVED PROBLEMS" styleClass="card-stat-label"/>
+            <Label fx:id="statSolvedLabel" text="0" styleClass="card-stat-value"/>
+            <Label text="Challenges Conquered" style="-fx-font-size: 11px; -fx-text-fill: #8b949e;"/>
+        </VBox>
+
+        <!-- Current Rank Card -->
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="CURRENT RANK" styleClass="card-stat-label"/>
+            <Label fx:id="statRankLabel" text="#1" styleClass="card-stat-value" style="-fx-text-fill: #d29922;"/>
+            <Label text="Global Standing" style="-fx-font-size: 11px; -fx-text-fill: #8b949e;"/>
+        </VBox>
+
+        <!-- Total Points Card -->
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="TOTAL POINTS" styleClass="card-stat-label"/>
+            <Label fx:id="statPointsLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #3fb950;"/>
+            <Label text="XP Earned" style="-fx-font-size: 11px; -fx-text-fill: #8b949e;"/>
+        </VBox>
+
+        <!-- Battles Participated Card -->
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="BATTLES" styleClass="card-stat-label"/>
+            <Label fx:id="statBattlesLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #a371f7;"/>
+            <Label text="Contests Fought" style="-fx-font-size: 11px; -fx-text-fill: #8b949e;"/>
+        </VBox>
+    </HBox>
+
+    <!-- Recent Submissions Section -->
+    <VBox styleClass="card" spacing="12.0" VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Recent Submissions" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
+            <Button text="View Performance &amp; Badges" onAction="#handleQuickPerformance" style="-fx-font-size: 11px;"/>
+        </HBox>
+
+        <TableView fx:id="recentSubmissionsTable" VBox.vgrow="ALWAYS" prefHeight="260.0">
+            <columns>
+                <TableColumn fx:id="colProblem" text="Problem Title" prefWidth="300.0"/>
+                <TableColumn fx:id="colStatus" text="Status" prefWidth="180.0"/>
+                <TableColumn fx:id="colScore" text="Score" prefWidth="110.0"/>
+                <TableColumn fx:id="colTime" text="Time" prefWidth="110.0"/>
+                <TableColumn fx:id="colDate" text="Submitted At" prefWidth="200.0"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+</VBox>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.codingbattle.controller.AdminDashboardController"
+      styleClass="main-window" prefWidth="1200.0" prefHeight="780.0" spacing="16.0">
+
+    <padding>
+        <Insets top="16.0" right="20.0" bottom="16.0" left="20.0"/>
+    </padding>
+
+    <!-- Top Admin Header -->
+    <HBox alignment="CENTER_LEFT" spacing="16.0">
+        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="⚡ CODING BATTLE - ADMINISTRATOR CONTROL CENTER" styleClass="heading-large" style="-fx-font-size: 20px; -fx-text-fill: #58a6ff;"/>
+            <Label text="Manage coding problems, test cases, live battles, students, and submission audits." styleClass="subheading"/>
+        </VBox>
+
+        <Button text="🚪 Sign Out" onAction="#handleLogout" styleClass="btn-danger"/>
+    </HBox>
+
+    <!-- Top 4 System Metrics -->
+    <HBox spacing="16.0">
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="TOTAL STUDENTS" styleClass="card-stat-label"/>
+            <Label fx:id="totalStudentsLabel" text="0" styleClass="card-stat-value"/>
+        </VBox>
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="CODING PROBLEMS" styleClass="card-stat-label"/>
+            <Label fx:id="totalProblemsLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #3fb950;"/>
+        </VBox>
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="BATTLES CREATED" styleClass="card-stat-label"/>
+            <Label fx:id="totalBattlesLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #e3b341;"/>
+        </VBox>
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="TOTAL SUBMISSIONS" styleClass="card-stat-label"/>
+            <Label fx:id="totalSubmissionsLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #a371f7;"/>
+        </VBox>
+    </HBox>
+
+    <!-- Admin Tabs Container -->
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" styleClass="card" style="-fx-padding: 8px;">
+
+        <!-- Tab 1: Problems Management -->
+        <Tab text="💻 Manage Problems">
+            <SplitPane dividerPositions="0.55" style="-fx-background-color: transparent;">
+                <!-- Problems Table -->
+                <VBox spacing="10.0" style="-fx-padding: 8px;">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Platform Coding Problems" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
+                        <Button text="🗑️ Delete Selected" onAction="#handleDeleteProblem" styleClass="btn-danger" style="-fx-font-size: 11px;"/>
+                    </HBox>
+                    <TableView fx:id="adminProblemsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colProbId" text="ID" prefWidth="60.0"/>
+                            <TableColumn fx:id="colProbTitle" text="Title" prefWidth="200.0"/>
+                            <TableColumn fx:id="colProbCategory" text="Category" prefWidth="130.0"/>
+                            <TableColumn fx:id="colProbDiff" text="Difficulty" prefWidth="100.0"/>
+                            <TableColumn fx:id="colProbPts" text="Points" prefWidth="80.0"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+
+                <!-- Add Problem Form -->
+                <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+                    <VBox spacing="10.0" style="-fx-padding: 8px;">
+                        <Label text="Add New Coding Problem" styleClass="heading-medium"/>
+
+                        <TextField fx:id="probTitleField" promptText="Problem Title (e.g. Valid Palindrome)"/>
+                        <TextArea fx:id="probDescArea" promptText="Full Problem Statement Description..." prefRowCount="3"/>
+
+                        <HBox spacing="10.0">
+                            <ComboBox fx:id="probCategoryCombo" prefWidth="180.0" promptText="Category"/>
+                            <ComboBox fx:id="probDifficultyCombo" prefWidth="140.0" promptText="Difficulty"/>
+                            <TextField fx:id="probPointsField" text="100" promptText="Points" prefWidth="80.0"/>
+                            <TextField fx:id="probTimeLimitField" text="2000" promptText="Time Limit (ms)" prefWidth="100.0"/>
+                        </HBox>
+
+                        <TextField fx:id="probInputFormatField" promptText="Input Format"/>
+                        <TextField fx:id="probOutputFormatField" promptText="Output Format"/>
+                        <TextField fx:id="probConstraintsField" promptText="Constraints (e.g. 1 &lt;= N &lt;= 10^5)"/>
+
+                        <Label text="Sample Input &amp; Output:" styleClass="card-stat-label"/>
+                        <TextArea fx:id="probSampleInputField" promptText="Sample Input" prefRowCount="2" style="-fx-font-family: Consolas;"/>
+                        <TextArea fx:id="probSampleOutputField" promptText="Sample Output" prefRowCount="2" style="-fx-font-family: Consolas;"/>
+
+                        <Button text="➕ Create Problem" onAction="#handleAddProblem" maxWidth="Infinity" styleClass="btn-primary"/>
+                    </VBox>
+                </ScrollPane>
+            </SplitPane>
+        </Tab>
+
+        <!-- Tab 2: Manage Test Cases -->
+        <Tab text="🧪 Test Cases">
+            <SplitPane dividerPositions="0.55" style="-fx-background-color: transparent;">
+                <VBox spacing="10.0" style="-fx-padding: 8px;">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Label text="Select Problem:" styleClass="card-stat-label"/>
+                        <ComboBox fx:id="tcProblemCombo" prefWidth="250.0"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="🗑️ Delete Test Case" onAction="#handleDeleteTestCase" styleClass="btn-danger" style="-fx-font-size: 11px;"/>
+                    </HBox>
+                    <TableView fx:id="testCasesTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colTcId" text="ID" prefWidth="60.0"/>
+                            <TableColumn fx:id="colTcInput" text="Input Data" prefWidth="180.0"/>
+                            <TableColumn fx:id="colTcExpected" text="Expected Output" prefWidth="180.0"/>
+                            <TableColumn fx:id="colTcSample" text="Is Sample?" prefWidth="90.0"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+
+                <VBox spacing="12.0" style="-fx-padding: 12px;">
+                    <Label text="Add New Test Case" styleClass="heading-medium"/>
+                    <Label text="Input Data:" styleClass="card-stat-label"/>
+                    <TextArea fx:id="tcInputArea" promptText="Input data fed to stdin..." prefRowCount="4" style="-fx-font-family: Consolas;"/>
+
+                    <Label text="Expected Output:" styleClass="card-stat-label"/>
+                    <TextArea fx:id="tcExpectedArea" promptText="Expected output from stdout..." prefRowCount="4" style="-fx-font-family: Consolas;"/>
+
+                    <CheckBox fx:id="tcSampleCheck" text="Make this a visible sample test case" textFill="#c9d1d9"/>
+                    <Button text="➕ Add Test Case" onAction="#handleAddTestCase" maxWidth="Infinity" styleClass="btn-accent"/>
+                </VBox>
+            </SplitPane>
+        </Tab>
+
+        <!-- Tab 3: Manage Battles -->
+        <Tab text="⚔️ Manage Battles">
+            <SplitPane dividerPositions="0.55" style="-fx-background-color: transparent;">
+                <VBox spacing="10.0" style="-fx-padding: 8px;">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Scheduled Contests" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
+                        <Button text="🗑️ Delete Battle" onAction="#handleDeleteBattle" styleClass="btn-danger" style="-fx-font-size: 11px;"/>
+                    </HBox>
+                    <TableView fx:id="adminBattlesTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colBatId" text="ID" prefWidth="60.0"/>
+                            <TableColumn fx:id="colBatName" text="Battle Name" prefWidth="220.0"/>
+                            <TableColumn fx:id="colBatDuration" text="Duration" prefWidth="110.0"/>
+                            <TableColumn fx:id="colBatStatus" text="Status" prefWidth="110.0"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+
+                <VBox spacing="10.0" style="-fx-padding: 10px;">
+                    <Label text="Schedule New Coding Battle" styleClass="heading-medium"/>
+                    <TextField fx:id="battleNameField" promptText="Battle Title (e.g. Java Code Cup #06)"/>
+                    <HBox spacing="10.0">
+                        <TextField fx:id="battleDurationField" text="30" promptText="Duration (minutes)" prefWidth="160.0"/>
+                        <ComboBox fx:id="battleStatusCombo" prefWidth="160.0"/>
+                    </HBox>
+                    <Label text="Select Contest Problems (Hold Ctrl for multiple):" styleClass="card-stat-label"/>
+                    <ListView fx:id="battleProblemsListView" prefHeight="160.0"/>
+                    <Button text="⚔️ Launch Battle" onAction="#handleCreateBattle" maxWidth="Infinity" styleClass="btn-primary"/>
+                </VBox>
+            </SplitPane>
+        </Tab>
+
+        <!-- Tab 4: Manage Students -->
+        <Tab text="👥 Registered Students">
+            <VBox spacing="10.0" style="-fx-padding: 8px;">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Student Enrolment Directory" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
+                    <Button text="🗑️ Remove Student" onAction="#handleDeleteStudent" styleClass="btn-danger" style="-fx-font-size: 11px;"/>
+                </HBox>
+                <TableView fx:id="adminStudentsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colStudId" text="ID" prefWidth="60.0"/>
+                        <TableColumn fx:id="colStudUsername" text="Username" prefWidth="200.0"/>
+                        <TableColumn fx:id="colStudEmail" text="Email" prefWidth="260.0"/>
+                        <TableColumn fx:id="colStudPoints" text="Total Points" prefWidth="140.0"/>
+                        <TableColumn fx:id="colStudSolved" text="Solved Challenges" prefWidth="160.0"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- Tab 5: Submission Audit Log -->
+        <Tab text="📜 Submission Audit Log">
+            <VBox spacing="10.0" style="-fx-padding: 8px;">
+                <Label text="Platform Solution Submissions" styleClass="heading-medium"/>
+                <TableView fx:id="adminSubmissionsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colSubId" text="Sub ID" prefWidth="70.0"/>
+                        <TableColumn fx:id="colSubUser" text="Student" prefWidth="160.0"/>
+                        <TableColumn fx:id="colSubProblem" text="Problem Title" prefWidth="260.0"/>
+                        <TableColumn fx:id="colSubStatus" text="Status" prefWidth="160.0"/>
+                        <TableColumn fx:id="colSubScore" text="Score" prefWidth="90.0"/>
+                        <TableColumn fx:id="colSubTime" text="Timestamp" prefWidth="180.0"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

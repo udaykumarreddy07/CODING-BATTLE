@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.codingbattle.controller.LeaderboardController"
+      spacing="16.0">
+
+    <!-- Header -->
+    <VBox spacing="4.0">
+        <Label text="Global Coder Standings" styleClass="heading-large"/>
+        <Label text="Ranked by total score, problems solved, and contest performance." styleClass="subheading"/>
+    </VBox>
+
+    <!-- Top 3 Podium Cards -->
+    <HBox spacing="16.0">
+        <!-- 2nd Place -->
+        <VBox fx:id="secondPlaceCard" styleClass="card" spacing="6.0" HBox.hgrow="ALWAYS" style="-fx-border-color: #8b949e; -fx-alignment: CENTER;">
+            <Label text="2ND PLACE" styleClass="card-stat-label"/>
+            <Label fx:id="secondPlaceUser" text="🥈 ---" styleClass="heading-medium"/>
+            <Label fx:id="secondPlacePoints" text="0 pts" styleClass="subheading"/>
+        </VBox>
+
+        <!-- 1st Place (Prominent) -->
+        <VBox fx:id="firstPlaceCard" styleClass="card" spacing="6.0" HBox.hgrow="ALWAYS" style="-fx-border-color: #d29922; -fx-border-width: 2px; -fx-alignment: CENTER; -fx-background-color: #1a202c;">
+            <Label text="👑 CHAMPION (1ST PLACE)" styleClass="card-stat-label" style="-fx-text-fill: #e3b341; -fx-font-weight: bold;"/>
+            <Label fx:id="firstPlaceUser" text="🥇 ---" styleClass="heading-large" style="-fx-text-fill: #e3b341;"/>
+            <Label fx:id="firstPlacePoints" text="0 pts" styleClass="card-stat-value" style="-fx-font-size: 16px; -fx-text-fill: #3fb950;"/>
+        </VBox>
+
+        <!-- 3rd Place -->
+        <VBox fx:id="thirdPlaceCard" styleClass="card" spacing="6.0" HBox.hgrow="ALWAYS" style="-fx-border-color: #a371f7; -fx-alignment: CENTER;">
+            <Label text="3RD PLACE" styleClass="card-stat-label"/>
+            <Label fx:id="thirdPlaceUser" text="🥉 ---" styleClass="heading-medium"/>
+            <Label fx:id="thirdPlacePoints" text="0 pts" styleClass="subheading"/>
+        </VBox>
+    </HBox>
+
+    <!-- Filter & Search Controls -->
+    <HBox spacing="12.0" alignment="CENTER_LEFT" styleClass="card" style="-fx-padding: 10px;">
+        <TextField fx:id="searchStudentField" promptText="🔍 Search student username..." HBox.hgrow="ALWAYS"/>
+        <Label text="DSA Filter:" styleClass="card-stat-label"/>
+        <ComboBox fx:id="topKCombo" prefWidth="200.0"/>
+    </HBox>
+
+    <!-- Leaderboard Table -->
+    <TableView fx:id="leaderboardTable" VBox.vgrow="ALWAYS" prefHeight="380.0">
+        <columns>
+            <TableColumn fx:id="colRank" text="Rank" prefWidth="90.0"/>
+            <TableColumn fx:id="colStudent" text="Student / Username" prefWidth="300.0"/>
+            <TableColumn fx:id="colPoints" text="Total Points" prefWidth="180.0"/>
+            <TableColumn fx:id="colSolved" text="Problems Solved" prefWidth="180.0"/>
+            <TableColumn fx:id="colSuccessRate" text="Success Rate" prefWidth="140.0"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+</VBox>

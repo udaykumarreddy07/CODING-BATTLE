@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.codingbattle.controller.StudentPerformanceController"
+            fitToWidth="true" style="-fx-background-color: transparent;">
+
+    <VBox spacing="18.0" style="-fx-padding: 4px;">
+        <!-- Header -->
+        <VBox spacing="4.0">
+            <Label text="Coding Performance &amp; Achievements" styleClass="heading-large"/>
+            <Label text="Deep analytics on your solved problems, success rates, and earned badges." styleClass="subheading"/>
+        </VBox>
+
+        <!-- Stats Overview Row -->
+        <HBox spacing="16.0">
+            <!-- Solved / Attempted Summary Card -->
+            <VBox styleClass="card" spacing="8.0" HBox.hgrow="ALWAYS" prefWidth="300.0">
+                <Label text="PROBLEM ACCURACY" styleClass="card-stat-label"/>
+                <HBox spacing="12.0" alignment="BASELINE_LEFT">
+                    <Label fx:id="totalSolvedLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #3fb950;"/>
+                    <Label text="/" styleClass="card-stat-value" style="-fx-text-fill: #8b949e;"/>
+                    <Label fx:id="totalAttemptedLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #58a6ff;"/>
+                    <Label text="Solved / Attempted" styleClass="subheading"/>
+                </HBox>
+                <ProgressBar fx:id="successProgressBar" progress="0.0" maxWidth="Infinity" style="-fx-accent: #2ea043;"/>
+                <HBox alignment="CENTER_RIGHT">
+                    <Label text="Success Rate: " styleClass="card-stat-label"/>
+                    <Label fx:id="successRateLabel" text="0.0%" style="-fx-font-weight: bold; -fx-text-fill: #3fb950;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Difficulty Breakdown Cards -->
+            <VBox styleClass="card" spacing="10.0" HBox.hgrow="ALWAYS">
+                <Label text="DIFFICULTY MASTERY" styleClass="card-stat-label"/>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="EASY" styleClass="badge-pill, badge-easy" prefWidth="70.0" alignment="CENTER"/>
+                    <Label fx:id="easyCountLabel" text="0 solved" styleClass="heading-medium" style="-fx-font-size: 13px;"/>
+                </HBox>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="MEDIUM" styleClass="badge-pill, badge-medium" prefWidth="70.0" alignment="CENTER"/>
+                    <Label fx:id="mediumCountLabel" text="0 solved" styleClass="heading-medium" style="-fx-font-size: 13px;"/>
+                </HBox>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="HARD" styleClass="badge-pill, badge-hard" prefWidth="70.0" alignment="CENTER"/>
+                    <Label fx:id="hardCountLabel" text="0 solved" styleClass="heading-medium" style="-fx-font-size: 13px;"/>
+                </HBox>
+            </VBox>
+        </HBox>
+
+        <!-- Chart Section -->
+        <VBox styleClass="card" spacing="10.0">
+            <Label text="Solved Problems Distribution" styleClass="heading-medium"/>
+            <PieChart fx:id="difficultyPieChart" prefHeight="260.0" legendVisible="true"/>
+        </VBox>
+
+        <!-- Badges & Gamification Showcase -->
+        <VBox styleClass="card" spacing="14.0">
+            <VBox spacing="4.0">
+                <Label text="Gamification Badges &amp; Achievements" styleClass="heading-medium"/>
+                <Label text="Badges are automatically unlocked as you hit coding milestones and contest victories." styleClass="subheading"/>
+            </VBox>
+            <FlowPane fx:id="badgesFlowPane" hgap="14.0" vgap="14.0"/>
+        </VBox>
+    </VBox>
+</ScrollPane>

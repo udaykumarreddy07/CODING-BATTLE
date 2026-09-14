@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.codingbattle.controller.CodeEditorController"
+            prefHeight="720.0" prefWidth="950.0">
+
+    <!-- Top Action Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-padding: 0 0 12 0;">
+            <Button text="← Back" onAction="#handleBack" styleClass="button"/>
+            <Label fx:id="problemTitleLabel" text="Problem Title" styleClass="heading-large" HBox.hgrow="ALWAYS"/>
+            <HBox spacing="6.0" alignment="CENTER_RIGHT">
+                <Label fx:id="difficultyBadge" text="EASY" styleClass="badge-pill, badge-easy"/>
+                <Label fx:id="categoryBadge" text="ARRAYS" styleClass="badge-pill, badge-medium"/>
+                <Label fx:id="pointsBadge" text="100 pts" styleClass="badge-pill, badge-easy"/>
+                <Label fx:id="timeLimitBadge" text="2000 ms" styleClass="badge-pill" style="-fx-border-color: #8b949e; -fx-text-fill: #c9d1d9;"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Main SplitPane: Left Problem Description, Right Code Editor & Results -->
+    <center>
+        <SplitPane dividerPositions="0.42">
+            <!-- Left Pane: Problem Statement & Examples -->
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+                <VBox spacing="14.0" style="-fx-padding: 12px;">
+                    <VBox styleClass="card" spacing="8.0">
+                        <Label text="DESCRIPTION" styleClass="card-stat-label"/>
+                        <Label fx:id="descriptionLabel" wrapText="true" style="-fx-font-size: 13px; -fx-line-spacing: 3px;"/>
+                    </VBox>
+
+                    <VBox styleClass="card" spacing="8.0">
+                        <Label text="INPUT FORMAT" styleClass="card-stat-label"/>
+                        <Label fx:id="inputFormatLabel" wrapText="true" style="-fx-font-size: 12px;"/>
+
+                        <Separator style="-fx-background-color: #30363d;"/>
+
+                        <Label text="OUTPUT FORMAT" styleClass="card-stat-label"/>
+                        <Label fx:id="outputFormatLabel" wrapText="true" style="-fx-font-size: 12px;"/>
+
+                        <Separator style="-fx-background-color: #30363d;"/>
+
+                        <Label text="CONSTRAINTS" styleClass="card-stat-label"/>
+                        <Label fx:id="constraintsLabel" wrapText="true" style="-fx-font-family: Consolas; -fx-font-size: 12px; -fx-text-fill: #d29922;"/>
+                    </VBox>
+
+                    <VBox styleClass="card" spacing="8.0">
+                        <Label text="SAMPLE INPUT" styleClass="card-stat-label"/>
+                        <TextArea fx:id="sampleInputArea" editable="false" prefRowCount="3" style="-fx-font-family: Consolas;"/>
+
+                        <Label text="SAMPLE OUTPUT" styleClass="card-stat-label"/>
+                        <TextArea fx:id="sampleOutputArea" editable="false" prefRowCount="3" style="-fx-font-family: Consolas;"/>
+                    </VBox>
+                </VBox>
+            </ScrollPane>
+
+            <!-- Right Pane: Code Editor & Console Output -->
+            <VBox spacing="10.0" style="-fx-padding: 12px;">
+                <!-- Editor Top Controls -->
+                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                    <Label text="Language: Java (OpenJDK 21+)" style="-fx-font-weight: bold; -fx-text-fill: #58a6ff;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="undoBtn" text="↺ Undo" onAction="#handleUndo" style="-fx-font-size: 11px;"/>
+                    <Button fx:id="redoBtn" text="↻ Redo" onAction="#handleRedo" style="-fx-font-size: 11px;"/>
+                    <Button text="Reset Template" onAction="#handleResetTemplate" style="-fx-font-size: 11px;"/>
+                </HBox>
+
+                <!-- Code Editor Area -->
+                <TextArea fx:id="codeArea" styleClass="code-editor" VBox.vgrow="ALWAYS" prefHeight="330.0"/>
+
+                <!-- Action Bar -->
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <Button fx:id="runBtn" text="▶  Run Code" onAction="#handleRunCode" styleClass="button" style="-fx-font-size: 13px; -fx-padding: 7 14 7 14;"/>
+                    <Button fx:id="submitBtn" text="🚀  Submit Solution" onAction="#handleSubmitCode" styleClass="btn-primary" style="-fx-font-size: 13px; -fx-padding: 7 14 7 14;"/>
+                    <ProgressIndicator fx:id="progressIndicator" prefWidth="24.0" prefHeight="24.0"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label fx:id="resultStatusBadge" text="Ready" styleClass="heading-medium" style="-fx-font-size: 13px;"/>
+                    <Label fx:id="resultScoreBadge" text="Score: --" styleClass="badge-pill, badge-medium"/>
+                    <Label fx:id="resultTimeBadge" text="Time: --" styleClass="badge-pill" style="-fx-border-color: #8b949e; -fx-text-fill: #c9d1d9;"/>
+                </HBox>
+
+                <!-- Console & Test Case Results Split / Tabs -->
+                <TabPane prefHeight="220.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                    <Tab text="Test Case Results">
+                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+                            <VBox fx:id="testCasesContainer" spacing="8.0" style="-fx-padding: 8px;">
+                                <Label text="Click 'Run Code' or 'Submit Solution' to test your code." styleClass="subheading"/>
+                            </VBox>
+                        </ScrollPane>
+                    </Tab>
+                    <Tab text="Compiler / Output Log">
+                        <TextArea fx:id="consoleOutputArea" editable="false" style="-fx-font-family: Consolas; -fx-font-size: 12px;"/>
+                    </Tab>
+                </TabPane>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>

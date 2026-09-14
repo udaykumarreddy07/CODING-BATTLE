@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.codingbattle.controller.ProblemListController"
+      spacing="16.0">
+
+    <!-- Header Section -->
+    <HBox alignment="CENTER_LEFT">
+        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="Practice Coding Challenges" styleClass="heading-large"/>
+            <Label text="Sharpen your programming, DSA, and problem-solving skills." styleClass="subheading"/>
+        </VBox>
+        <Label fx:id="countLabel" text="Showing 0 challenges" styleClass="subheading" style="-fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- Search & Filter Bar -->
+    <HBox spacing="12.0" alignment="CENTER_LEFT" styleClass="card" style="-fx-padding: 12px;">
+        <TextField fx:id="searchField" promptText="🔍 Search challenges by title, keyword, or description..." HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="categoryCombo" prefWidth="170.0"/>
+        <ComboBox fx:id="difficultyCombo" prefWidth="150.0"/>
+        <ComboBox fx:id="statusCombo" prefWidth="140.0"/>
+        <Button text="Reset" onAction="#handleResetFilters" styleClass="button"/>
+    </HBox>
+
+    <!-- Problem Table -->
+    <TableView fx:id="problemsTable" VBox.vgrow="ALWAYS" prefHeight="480.0">
+        <columns>
+            <TableColumn fx:id="colStatus" text="Status" prefWidth="100.0"/>
+            <TableColumn fx:id="colTitle" text="Problem Title" prefWidth="260.0"/>
+            <TableColumn fx:id="colCategory" text="Category" prefWidth="160.0"/>
+            <TableColumn fx:id="colDifficulty" text="Difficulty" prefWidth="120.0"/>
+            <TableColumn fx:id="colPoints" text="Points" prefWidth="110.0"/>
+            <TableColumn fx:id="colAction" text="Action" prefWidth="150.0"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+</VBox>
