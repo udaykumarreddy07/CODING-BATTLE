@@ -12,5 +12,7 @@ package-lock.json linguist-vendored
 *.js linguist-detectable=false
 *.css linguist-detectable=false
 *.docx binary
+*.pptx binary
 *.pdf binary
 *.java linguist-detectable=true
+
