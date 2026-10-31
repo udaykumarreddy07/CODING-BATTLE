@@ -1,6 +1,7 @@
   # Coding Battle Platform — Implementation Plan & Progress Tracking
 
-> **Platform Type**: Interactive Java Programming Competition & Learning Platform  
+> **Course**: Object-Oriented Programming using Java (CSE203) — Java Mini Project  
+> **Mandated Architecture**: JavaFX 21 (Frontend) + Core Java 17+ (Backend/OOP/DSA) + JDBC + MySQL  
 > **Target Environments**: JavaFX 21 Native Desktop Application + Node.js/Express Web Platform  
 > **Document Purpose**: Complete Implementation Plan, Module Progress Matrix, Verification, and Roadmap  
 

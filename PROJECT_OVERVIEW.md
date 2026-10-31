@@ -1,6 +1,7 @@
 # Coding Battle Platform — Comprehensive Project Overview
 
-> **Platform Type**: Interactive Java Programming Competition & Learning Platform  
+> **Course**: Object-Oriented Programming using Java (CSE203) — Java Mini Project  
+> **Mandated Architecture**: JavaFX 21 (Frontend) + Core Java 17+ (Backend/OOP/DSA) + JDBC + MySQL  
 > **Target Environments**: JavaFX 21 Native Desktop Application + Node.js/Express Web Platform  
 > **Curriculum Alignment**: Progressive Core Java to Advanced Java Programming Course  
 > **Document Purpose**: Complete Architectural Specification, OOP & DSA Foundations, and Technical Overview  

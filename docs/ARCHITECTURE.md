@@ -1,8 +1,9 @@
 # 🏛️ Coding Battle Platform — System Architecture & Technical Blueprint
 
-> **System**: Interactive Competitive Programming & Academic Evaluation Platform  
-> **Frameworks**: JavaFX 21 Native Desktop Client & Node.js/Express Web Platform  
-> **Language**: Java 17+ (Core & Advanced) | JavaScript (ES6+)  
+> **Course**: Object-Oriented Programming using Java (CSE203) — Java Mini Project  
+> **Mandated Architecture**: JavaFX (Frontend) + Core Java (Backend & OOP/DSA) + JDBC (Database Connectivity) + MySQL (Storage)  
+> **Primary Client**: JavaFX 21 Native Desktop Client (Hardware Accelerated FXML & CSS)  
+> **Language**: Java 17+ (Core & Advanced Java)  
 > **Database**: Dual-Engine (Production MySQL with zero-config Embedded H2 auto-failover)  
 
 ---
@@ -391,3 +392,4 @@ The platform strictly exemplifies established Software Engineering and Object-Or
    - `SubmissionQueue` utilizes Java synchronization locks to safely ingest concurrent code submissions from multiple students without race conditions.
 3. **Subprocess Watchdogs**:
    - Every execution subprocess is assigned an independent watchdog thread that performs a non-blocking `process.waitFor(3000, TimeUnit.MILLISECONDS)`. If timed out, `process.destroyForcibly()` ensures no orphaned threads or zombie processes consume server resources.
+

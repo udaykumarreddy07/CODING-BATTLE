@@ -130,3 +130,4 @@ When students click **Run Code** or **Submit Solution**:
 - **Category Progress Bars**: Real-time mastery percentages across Arrays, Strings, Dynamic Programming, and OOP.
 - **Streak Tracker**: Consecutive coding days indicator to encourage continuous lab practice.
 - **Achievement Badges**: Visual milestone badges (`Array Master`, `Speed Demon`, `First Blood`, `Week Long Streak`).
+

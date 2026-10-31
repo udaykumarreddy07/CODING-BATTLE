@@ -1,5 +1,6 @@
 # 🧬 Data Structures, Algorithms & OOP Architecture Guide
 
+> **Course**: Object-Oriented Programming using Java (CSE203) — Java Mini Project  
 > **Core Competencies**: Object-Oriented Programming (OOP) & Custom Data Structures and Algorithms (DSA)  
 > **Package**: `com.codingbattle.model` & `com.codingbattle.dsa`  
 > **Target Audience**: Viva Voce Evaluators, Technical Architects & Core Java Learners  
@@ -264,3 +265,4 @@ To avoid relying purely on high-level collection abstractions, the core platform
 | **`ProblemSearchIndex`** | Points Range Query | $\mathcal{O}(\log N)$ | $\mathcal{O}(\log N)$ | $\mathcal{O}(\log N)$ | $\mathcal{O}(1)$ auxiliary |
 
 *\*With Median-of-Three pivot selection and random shuffling safeguards.*
+
