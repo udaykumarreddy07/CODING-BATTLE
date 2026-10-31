@@ -4603,13 +4603,29 @@ app.post('/api/viva/security-check', (req, res) => {
     });
 });
 
-// Dedicated Administrator Portal route
+const DEPLOYED_URL = process.env.DEPLOYED_URL || 'https://codingbattle.vercel.app';
+
+// Dedicated Administrator Portal route (Redirects to Deployed Vercel Platform when accessed via localhost)
 app.get(['/admin', '/admin/', '/admin.html'], (req, res) => {
+    if (req.query.local !== 'true' && req.headers.host && req.headers.host.includes('localhost')) {
+        return res.redirect(302, `${DEPLOYED_URL}/admin.html`);
+    }
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
-// Fallback to index.html for student client-side routing
+// Student interface route (Redirects to Deployed Vercel Platform when accessed via localhost)
+app.get(['/', '/index.html'], (req, res) => {
+    if (req.query.local !== 'true' && req.headers.host && req.headers.host.includes('localhost')) {
+        return res.redirect(302, DEPLOYED_URL);
+    }
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Fallback to index.html for client-side routing
 app.get('*', (req, res) => {
+    if (req.query.local !== 'true' && req.headers.host && req.headers.host.includes('localhost')) {
+        return res.redirect(302, DEPLOYED_URL);
+    }
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
@@ -4619,7 +4635,8 @@ const server = app.listen(PORT, () => {
 \x1b[36m╔══════════════════════════════════════════════════════════════════════════════╗
 ║        \x1b[1m\x1b[33m⚡ CODING BATTLE PLATFORM — INTERACTIVE JAVA ENVIRONMENT\x1b[0m\x1b[36m              ║
 ╠══════════════════════════════════════════════════════════════════════════════╣
-║  \x1b[32m✔ Web Platform Live:\x1b[0m \x1b[1m\x1b[4mhttp://localhost:${PORT}\x1b[0m                                 \x1b[36m║
+║  \x1b[32m✔ Deployed Live (Vercel):\x1b[0m \x1b[1m\x1b[4m${DEPLOYED_URL}\x1b[0m                     \x1b[36m║
+║  \x1b[32m✔ Local Backend Engine:\x1b[0m   \x1b[90mhttp://localhost:${PORT}\x1b[0m                             \x1b[36m║
 ║  \x1b[32m✔ Curriculum Loaded:\x1b[0m 28 Core Java Course Programs (Modules 1 - 6)          \x1b[36m║
 ║  \x1b[32m✔ Sandbox Engine:\x1b[0m    Isolated Subprocess (javac / OpenJDK 21)            \x1b[36m║
 ║  \x1b[32m✔ Watchdog Limit:\x1b[0m    2000ms CPU Timeout Guardian (Infinite Loop Killer)  \x1b[36m║
@@ -4634,16 +4651,16 @@ const server = app.listen(PORT, () => {
 
     console.log(banner);
 
-    // Automatically open user's default browser directly to the output UI
+    // Automatically open user's default browser directly to the DEPLOYED VERCEL URL
     try {
-        const url = `http://localhost:${PORT}`;
-        console.log(`\x1b[32m🌐 Launching default browser to view output:\x1b[0m \x1b[1m\x1b[4m${url}\x1b[0m\n`);
+        const targetUrl = DEPLOYED_URL;
+        console.log(`\x1b[32m🌐 Launching default browser directly to Deployed Vercel Platform:\x1b[0m \x1b[1m\x1b[4m${targetUrl}\x1b[0m\n`);
         if (process.platform === 'win32') {
-            exec(`start "" "${url}"`);
+            exec(`start "" "${targetUrl}"`);
         } else if (process.platform === 'darwin') {
-            exec(`open "${url}"`);
+            exec(`open "${targetUrl}"`);
         } else {
-            exec(`xdg-open "${url}"`);
+            exec(`xdg-open "${targetUrl}"`);
         }
     } catch (e) {}
 });
@@ -4653,15 +4670,14 @@ server.on('error', (err) => {
         const nextPort = Number(PORT) + 1;
         console.warn(`\n\x1b[33m⚠️  Port ${PORT} is in use. Falling back to port ${nextPort}...\x1b[0m`);
         const fallbackServer = app.listen(nextPort, () => {
-            const fallbackUrl = `http://localhost:${nextPort}`;
-            console.log(`\x1b[32m✔ Web Platform Live:\x1b[0m \x1b[1m\x1b[4m${fallbackUrl}\x1b[0m`);
+            console.log(`\x1b[32m✔ Local Engine Port:\x1b[0m ${nextPort} | \x1b[32m✔ Deployed Platform (Vercel):\x1b[0m \x1b[1m\x1b[4m${DEPLOYED_URL}\x1b[0m`);
             try {
                 if (process.platform === 'win32') {
-                    exec(`start "" "${fallbackUrl}"`);
+                    exec(`start "" "${DEPLOYED_URL}"`);
                 } else if (process.platform === 'darwin') {
-                    exec(`open "${fallbackUrl}"`);
+                    exec(`open "${DEPLOYED_URL}"`);
                 } else {
-                    exec(`xdg-open "${fallbackUrl}"`);
+                    exec(`xdg-open "${DEPLOYED_URL}"`);
                 }
             } catch (e) {}
         });
@@ -4670,4 +4686,3 @@ server.on('error', (err) => {
         console.error('Server error:', err);
     }
 });
-

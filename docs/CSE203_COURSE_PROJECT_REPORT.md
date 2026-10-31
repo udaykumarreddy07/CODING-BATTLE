@@ -250,3 +250,4 @@ In direct compliance with the **Programming-Based Practical Assessment** section
 - **Resilience**: Singleton `DatabaseConnection` with automatic runtime failover to embedded H2 ensures zero presentation downtime.
 - **Security**: Process isolation via `ProcessBuilder` with a 3000ms watchdog prevents infinite loops and system damage.
 - **DSA**: Custom implementations of Max-Heap, QuickSort, LIFO Stack, and FIFO Queue demonstrate mastery of algorithmic principles beyond basic standard library usage.
+

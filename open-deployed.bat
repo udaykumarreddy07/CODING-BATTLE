@@ -1,0 +1,3 @@
+@echo off
+echo [INFO] Launching Deployed Coding Battle Platform on Vercel...
+start "" "https://codingbattle.vercel.app"

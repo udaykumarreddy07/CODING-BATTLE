@@ -10,10 +10,13 @@
 [![Database](https://img.shields.io/badge/Database-MySQL_8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Failover DB](https://img.shields.io/badge/Failover-Embedded_H2-1F5DA0?style=for-the-badge)](https://www.h2database.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+[![Live Deployment](https://img.shields.io/badge/Live_Deployment-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://codingbattle.vercel.app)
 
 <p align="center">
   <b>Official CSE203 Java Mini Project: An Interactive Competitive Programming and Academic Evaluation System integrating JavaFX as the frontend interface, Core Java OOP & Data Structures as the backend application layer, and JDBC for MySQL persistent storage.</b>
 </p>
+
+🌐 **Live Web Platform (Vercel)**: [https://codingbattle.vercel.app](https://codingbattle.vercel.app)
 
 [System Architecture](docs/ARCHITECTURE.md) • [DSA & OOP Blueprint](docs/DSA_AND_OOP.md) • [CSE203 Project Report](docs/CSE203_COURSE_PROJECT_REPORT.md) • [Portals Guide](docs/FACULTY_AND_STUDENT_PORTALS.md)
 
@@ -400,7 +403,17 @@ In direct alignment with the **CSE203 Quiz & Practical Assessment** requirements
 - **Apache Maven 3.8+** (bundled or installed)
 - **MySQL 8.0** *(Optional — Embedded H2 starts automatically if MySQL is offline)*
 
-### Method 1: One-Click Windows Batch Launcher (Recommended)
+### Method 0: Web Platform Terminal Launcher (Opens Deployed Vercel Link)
+Run in your terminal to automatically launch the live platform on Vercel:
+```bash
+npm run dev
+# OR
+npm start
+# OR double-click: .\open-deployed.bat
+```
+*(Opens `https://codingbattle.vercel.app` directly in your default browser)*
+
+### Method 1: One-Click Windows Batch Launcher (JavaFX Desktop Client)
 Double-click `run.bat` or execute in Command Prompt:
 ```cmd
 .\run.bat
