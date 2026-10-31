@@ -2,7 +2,7 @@
 
 > **Course**: Object-Oriented Programming using Java (CSE203) — Java Mini Project  
 > **Mandated Architecture**: JavaFX 21 (Frontend) + Core Java 17+ (Backend/OOP/DSA) + JDBC + MySQL  
-> **Target Environments**: JavaFX 21 Native Desktop Application + Node.js/Express Web Platform  
+> **Target Architecture**: JavaFX 21 (Frontend Interface) + Core Java 17+ (Backend Implementation) + JDBC + MySQL / MS Access Database  
 > **Curriculum Alignment**: Progressive Core Java to Advanced Java Programming Course  
 > **Document Purpose**: Complete Architectural Specification, OOP & DSA Foundations, and Technical Overview  
 
@@ -73,7 +73,7 @@ The **Coding Battle Platform** is a complete, self-contained educational competi
 ### Technology Matrix
 - **Programming Language**: Java 17 / 21 LTS (Modern Core Java, Concurrency, Process API).
 - **Desktop Framework**: JavaFX 21 with FXML layouts and modular CSS.
-- **Web Stack**: Node.js, Express.js 4.x, Semantic HTML5, Custom Responsive Vanilla CSS, ES6+ JavaScript.
+- **Data Connectivity**: Standard JDBC API utilizing parameterized PreparedStatement and connection pooling.
 - **Persistence Engines**: JDBC, MySQL 8.x, H2 Database Engine 2.2.x.
 - **Build & Management**: Apache Maven 3.9.x, Windows Batch Launcher (`run.bat`), PowerShell Launcher (`run.ps1`).
 

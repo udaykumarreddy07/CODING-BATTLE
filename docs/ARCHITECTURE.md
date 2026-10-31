@@ -24,9 +24,9 @@
 
 The **Coding Battle Platform** is engineered as a resilient, high-performance competitive programming ecosystem designed for higher-education computer science coursework, lab practical examinations, and timed coding competitions.
 
-The platform provides a dual-client interface:
-- **Native Desktop Client (JavaFX 21)**: Provides a high-fidelity desktop IDE experience with hardware acceleration, split-pane coding, and low-latency local execution.
-- **Modern Web Client (HTML5 / ES6 / Express)**: Accessible across any modern browser, tablet, or workstation without requiring local compilation tools installed on student machines.
+The platform is built according to the official CSE203 Java Mini Project specification:
+- **Frontend Interface Layer (JavaFX 21)**: High-fidelity desktop GUI built with FXML declarative layouts, JavaFX CSS, hardware acceleration, split-pane code editor, and live countdown timers.
+- **Backend Implementation Layer (Core Java 17+)**: Core OOP class hierarchy, custom DSA algorithms, isolated process compilation sandbox, and JDBC persistence.
 
 ```mermaid
 flowchart TD
@@ -88,8 +88,8 @@ The architecture is partitioned into five distinct, strictly decoupled tiers:
 
 | Tier | Primary Responsibilities | Key Technologies |
 | :--- | :--- | :--- |
-| **1. Client Tier** | User interface rendering, syntax highlighting, Monaco-like editor behavior, undo/redo buffers, countdown timers. | JavaFX 21, FXML, CSS3, HTML5, Vanilla JavaScript (ES6+). |
-| **2. Controller / Gateway Tier** | Session verification, route handling, role authorization (`STUDENT` vs `ADMIN`), input validation. | JavaFX Controllers, Express.js middleware, `SessionManager`. |
+| **1. Client Tier** | User interface rendering, syntax highlighting, split-pane editor behavior, undo/redo buffers, countdown timers. | JavaFX SDK 21, FXML, JavaFX CSS Styling. |
+| **2. Controller Layer** | Session verification, route handling, role authorization (`STUDENT` vs `ADMIN`), input validation. | JavaFX Controllers, `SessionManager`. |
 | **3. Business & DSA Tier** | Coursework logic, contest scoring calculations, Top-K leaderboard sorting, asynchronous submission queues. | Java 17 OOP, `LeaderboardHeap`, `QuickSortRanking`, `SubmissionQueue`. |
 | **4. Sandboxed Execution Tier** | Dynamic code compilation, subprocess isolation, memory and runtime bounds enforcement, diff validation. | `javax.tools.JavaCompiler`, `ProcessBuilder`, Watchdog threads. |
 | **5. Data Persistence Tier** | Storage of users, problems, test cases, submissions, scores, battles, assignments, and audit trails. | JDBC, MySQL 8.0, Embedded H2 Database, Connection Pool. |

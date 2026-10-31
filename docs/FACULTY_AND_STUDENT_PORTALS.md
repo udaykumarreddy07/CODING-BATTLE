@@ -1,8 +1,8 @@
 # 🖥️ Faculty & Student Portals — Functional & User Guide
 
-> **Platforms**: Web Single Page Application & JavaFX Desktop Client  
+> **Platform**: JavaFX 21 Desktop Client & Core Java Backend  
 > **Key Personas**: Academic Faculty / Administrators & Computer Science Students  
-> **Primary Interfaces**: `/index.html` (Student Arena) & `/admin.html` (Faculty Command Suite)  
+> **Primary Interfaces**: `StudentMainView.fxml` (Student Arena) & `AdminDashboardView.fxml` (Faculty Command Suite)  
 
 ---
 
@@ -33,20 +33,20 @@ flowchart TD
     LoginView --> CredentialsCheck{"Authenticate Credentials"}
     
     CredentialsCheck -->|Role: ADMIN / FACULTY| AdminCheck{"Check Administrative Permissions"}
-    AdminCheck -->|Authorized| AdminPortal["Faculty Command Suite (/admin.html)"]
+    AdminCheck -->|Authorized| AdminPortal["Faculty Command Suite (AdminDashboardView.fxml)"]
     AdminCheck -->|Unauthorized| ErrorMsg["Access Denied Toast"]
     
-    CredentialsCheck -->|Role: STUDENT| StudentPortal["Student Arena (/index.html)"]
+    CredentialsCheck -->|Role: STUDENT| StudentPortal["Student Arena (StudentMainView.fxml)"]
     CredentialsCheck -->|Invalid Credentials| ShakeForm["Display Validation Error"]
 ```
 
 ### Quick-Test Access Credentials
 | Role | Username | Password | Default Routing |
 | :--- | :--- | :--- | :--- |
-| **Faculty / Admin** | `admin` | `admin123` | Redirects to `/admin.html` with full administrative privileges |
-| **Student** | `rahul` | `student123` | Redirects to `/index.html` (Rank #1, 610 pts, active streak) |
-| **Student** | `ananya` | `student123` | Redirects to `/index.html` (Rank #2, active student) |
-| **Student** | `kiran` | `student123` | Redirects to `/index.html` (Rank #3, active student) |
+| **Faculty / Admin** | `admin` | `admin123` | Navigates to `AdminDashboardView.fxml` with full administrative privileges |
+| **Student** | `rahul` | `student123` | Navigates to `StudentMainView.fxml` (Rank #1, 610 pts, active streak) |
+| **Student** | `ananya` | `student123` | Navigates to `StudentMainView.fxml` (Rank #2, active student) |
+| **Student** | `kiran` | `student123` | Navigates to `StudentMainView.fxml` (Rank #3, active student) |
 
 ---
 
@@ -91,7 +91,7 @@ Instructors have real-time visibility into student work:
 
 ## 3. Student Arena & Competition Hub
 
-The **Student Arena** (`/index.html`) is structured for immersive coding and algorithmic practice:
+The **Student Arena** (`StudentMainView.fxml`) is structured for immersive coding and algorithmic practice:
 
 ### Interactive Split-Pane Code Editor
 - **Syntax Highlighting**: Modern dark IDE theme with clean code readability.

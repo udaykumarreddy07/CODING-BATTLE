@@ -1,0 +1,16 @@
+# GitHub Linguist Language Overrides
+# CSE203: Object Oriented Programming using Java (JavaFX 21 + Core Java 17+ + JDBC + MySQL)
+
+public/** linguist-vendored
+server.js linguist-vendored
+open-deployed.bat linguist-vendored
+open-deployed.ps1 linguist-vendored
+package.json linguist-vendored
+package-lock.json linguist-vendored
+
+*.html linguist-detectable=false
+*.js linguist-detectable=false
+*.css linguist-detectable=false
+*.docx binary
+*.pdf binary
+*.java linguist-detectable=true
