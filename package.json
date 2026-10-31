@@ -1,0 +1,22 @@
+{
+  "name": "coding-battle-platform",
+  "version": "1.0.0",
+  "description": "Interactive Java Programming Competition Web & Desktop Platform",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "coding-battle",
+    "dsa",
+    "competitive-programming",
+    "java"
+  ],
+  "author": "Student Developer",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

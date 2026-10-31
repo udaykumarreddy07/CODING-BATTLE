@@ -86,7 +86,7 @@
                 </HBox>
 
                 <!-- Console & Test Case Results Split / Tabs -->
-                <TabPane prefHeight="220.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                <TabPane prefHeight="340.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                     <Tab text="Test Case Results">
                         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
                             <VBox fx:id="testCasesContainer" spacing="8.0" style="-fx-padding: 8px;">
@@ -95,7 +95,7 @@
                         </ScrollPane>
                     </Tab>
                     <Tab text="Compiler / Output Log">
-                        <TextArea fx:id="consoleOutputArea" editable="false" style="-fx-font-family: Consolas; -fx-font-size: 12px;"/>
+                        <TextArea fx:id="consoleOutputArea" editable="false" style="-fx-font-family: Consolas; -fx-font-size: 15px; -fx-font-weight: 500;"/>
                     </Tab>
                 </TabPane>
             </VBox>

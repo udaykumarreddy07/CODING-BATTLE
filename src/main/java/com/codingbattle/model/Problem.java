@@ -31,6 +31,11 @@ public class Problem {
         this.testCases = new ArrayList<>();
     }
 
+    public Problem(int problemId, String title, String description, Category category, Difficulty difficulty, int points) {
+        this(problemId, title, description, "", "", "", difficulty != null ? difficulty : Difficulty.EASY,
+                category != null ? category : Category.ARRAYS, points > 0 ? points : 100, 2000, "", "");
+    }
+
     public Problem(int problemId, String title, String description, String inputFormat,
                    String outputFormat, String constraints, Difficulty difficulty,
                    Category category, int points, int timeLimit,

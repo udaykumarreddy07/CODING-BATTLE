@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <!-- Background Outer Glow -->
+    <filter id="arenaGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <!-- Gradients -->
+    <!-- Shield Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="35%" stop-color="#818cf8" />
+      <stop offset="70%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <!-- Shield Dark Inner Gradient -->
+    <linearGradient id="shieldInnerGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#111927" />
+      <stop offset="100%" stop-color="#070a10" />
+    </linearGradient>
+
+    <!-- Java Warm Ember Steam Gradient -->
+    <linearGradient id="javaSteamAmber" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="50%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+
+    <!-- Java Cyber Cyan Steam Gradient -->
+    <linearGradient id="javaSteamCyan" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#a7f3d0" />
+    </linearGradient>
+
+    <!-- Java Cup Body Gradient -->
+    <linearGradient id="cupBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="60%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+
+    <!-- Battle Sword 1 (Cyan Blade) -->
+    <linearGradient id="swordBladeCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <!-- Battle Sword 2 (Amber Blade) -->
+    <linearGradient id="swordBladeAmber" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient Glow Behind Shield -->
+  <polygon points="60,8 106,30 106,86 60,112 14,86 14,30" 
+           fill="none" stroke="url(#borderGrad)" stroke-width="3" 
+           opacity="0.35" filter="url(#arenaGlow)" />
+
+  <!-- Outer Cyber Shield Frame -->
+  <polygon points="60,10 104,31 104,85 60,110 16,85 16,31" 
+           fill="url(#shieldInnerGrad)" 
+           stroke="url(#borderGrad)" 
+           stroke-width="2.5" 
+           stroke-linejoin="round" />
+
+  <!-- Inner Tech Edge Inset -->
+  <polygon points="60,16 98,35 98,81 60,104 22,81 22,35" 
+           fill="none" 
+           stroke="#38bdf8" 
+           stroke-width="0.75" 
+           stroke-dasharray="8 3" 
+           opacity="0.3" />
+
+  <!-- ================= BATTLE ELEMENT: Crossed Code Swords / Braces ================= -->
+  <!-- Left Sword (Cyber Blade from Top-Left to Bottom-Right) -->
+  <g opacity="0.65" filter="url(#softShadow)">
+    <line x1="28" y1="28" x2="92" y2="92" stroke="url(#swordBladeCyan)" stroke-width="3.5" stroke-linecap="round" />
+    <!-- Crossguard & Hilt -->
+    <line x1="24" y1="36" x2="36" y2="24" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="25" cy="25" r="2.5" fill="#38bdf8" />
+  </g>
+
+  <!-- Right Sword (Amber Flame Blade from Top-Right to Bottom-Left) -->
+  <g opacity="0.65" filter="url(#softShadow)">
+    <line x1="92" y1="28" x2="28" y2="92" stroke="url(#swordBladeAmber)" stroke-width="3.5" stroke-linecap="round" />
+    <!-- Crossguard & Hilt -->
+    <line x1="96" y1="36" x2="84" y2="24" stroke="#fcd34d" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="95" cy="25" r="2.5" fill="#f59e0b" />
+  </g>
+
+  <!-- ================= CODE BRACKETS: { } Accents ================= -->
+  <text x="25" y="65" font-family="'Fira Code', 'Courier New', monospace" font-size="20" font-weight="900" fill="#38bdf8" opacity="0.55" text-anchor="middle">&#10100;</text>
+  <text x="95" y="65" font-family="'Fira Code', 'Courier New', monospace" font-size="20" font-weight="900" fill="#f59e0b" opacity="0.55" text-anchor="middle">&#10101;</text>
+
+  <!-- ================= ICONIC JAVA STEAM CURVES ================= -->
+  <!-- Left Steam Curve (Amber Flame) -->
+  <path d="M53 48 C48 42, 49 34, 55 28 C60 23, 56 16, 52 14 C56 18, 54 24, 48 30 C43 36, 44 43, 50 49 Z" 
+        fill="url(#javaSteamAmber)" 
+        opacity="0.95" 
+        filter="url(#arenaGlow)" />
+
+  <!-- Right Steam Curve (Cyan Energy Wave) -->
+  <path d="M63 47 C68 41, 67 33, 61 27 C57 22, 60 16, 64 14 C60 18, 62 24, 67 30 C72 36, 70 43, 65 48 Z" 
+        fill="url(#javaSteamCyan)" 
+        opacity="0.9" 
+        filter="url(#arenaGlow)" />
+
+  <!-- Center Energy Spark -->
+  <circle cx="58" cy="19" r="1.8" fill="#ffffff" filter="url(#arenaGlow)" />
+
+  <!-- ================= JAVA COFFEE CUP & SAUCER ================= -->
+  <!-- Saucer / Base Plate -->
+  <ellipse cx="60" cy="85" rx="24" ry="4.5" fill="#0f172a" stroke="url(#borderGrad)" stroke-width="1.8" />
+  <ellipse cx="60" cy="84" rx="18" ry="2.5" fill="#1e293b" opacity="0.8" />
+
+  <!-- Cup Handle -->
+  <path d="M74 57 C85 57, 85 73, 72 75" 
+        fill="none" 
+        stroke="url(#borderGrad)" 
+        stroke-width="3" 
+        stroke-linecap="round" />
+
+  <!-- Cup Body -->
+  <path d="M43 53 L77 53 C76 71, 71 81, 60 81 C49 81, 44 71, 43 53 Z" 
+        fill="url(#cupBodyGrad)" 
+        stroke="#60a5fa" 
+        stroke-width="1.8" 
+        stroke-linejoin="round" 
+        filter="url(#softShadow)" />
+
+  <!-- Cup Rim (Ellipse top) -->
+  <ellipse cx="60" cy="53" rx="17" ry="4" fill="#1e3a8a" stroke="#93c5fd" stroke-width="1.2" />
+
+  <!-- Liquid Surface in Cup -->
+  <ellipse cx="60" cy="53.5" rx="14" ry="2.8" fill="#0f172a" />
+  <ellipse cx="60" cy="53.5" rx="11" ry="2" fill="url(#javaSteamAmber)" opacity="0.3" />
+
+  <!-- Cyber Slash Across Cup Face (Slash / Battle Logo Motif) -->
+  <path d="M49 61 L71 73" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.8" />
+  <polygon points="56,62 64,62 61,68 66,68 57,76 59,70 54,70" fill="#facc15" opacity="0.95" />
+
+</svg>

@@ -2,12 +2,13 @@ package com.codingbattle;
 
 import com.codingbattle.database.DatabaseInitializer;
 import com.codingbattle.engine.JavaCodeEvaluator;
-import com.codingbattle.model.Problem;
-import com.codingbattle.model.Submission;
-import com.codingbattle.model.SubmissionStatus;
+import com.codingbattle.model.*;
 import com.codingbattle.service.ProblemService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,8 +26,12 @@ public class CodeEvaluatorTest {
 
     @Test
     public void testCorrectSolutionPalindrome() {
-        Problem problem = problemService.getProblemDetails(2); // Palindrome Number
-        assertNotNull(problem);
+        Problem problem = new Problem(999, "Palindrome Test", "Test palindrome", Category.ARRAYS, Difficulty.EASY, 100);
+        List<TestCase> cases = new ArrayList<>();
+        cases.add(new TestCase(1, 999, "121", "true", true));
+        cases.add(new TestCase(2, 999, "-121", "false", false));
+        cases.add(new TestCase(3, 999, "10", "false", false));
+        problem.setTestCases(cases);
 
         String correctCode = """
             import java.util.Scanner;

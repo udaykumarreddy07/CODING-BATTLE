@@ -6,34 +6,45 @@
 
 <VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.codingbattle.controller.AdminDashboardController"
-      styleClass="main-window" prefWidth="1200.0" prefHeight="780.0" spacing="16.0">
+      styleClass="main-window" prefWidth="1260.0" prefHeight="820.0" spacing="14.0">
 
     <padding>
-        <Insets top="16.0" right="20.0" bottom="16.0" left="20.0"/>
+        <Insets top="14.0" right="18.0" bottom="14.0" left="18.0"/>
     </padding>
 
     <!-- Top Admin Header -->
     <HBox alignment="CENTER_LEFT" spacing="16.0">
-        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
-            <Label text="⚡ CODING BATTLE - ADMINISTRATOR CONTROL CENTER" styleClass="heading-large" style="-fx-font-size: 20px; -fx-text-fill: #58a6ff;"/>
-            <Label text="Manage coding problems, test cases, live battles, students, and submission audits." styleClass="subheading"/>
+        <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="⚡ CODING BATTLE" styleClass="heading-large" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #58a6ff;"/>
+                <Label text="FACULTY COMMAND &amp; EVALUATION PORTAL" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #e0e7ff; -fx-background-color: #4f46e5; -fx-padding: 3 8; -fx-background-radius: 4;"/>
+            </HBox>
+            <Label text="Curriculum supervision, student streak monitoring, examination proctoring &amp; automated grading." styleClass="subheading"/>
         </VBox>
 
-        <Button text="🚪 Sign Out" onAction="#handleLogout" styleClass="btn-danger"/>
+        <Button text="🚪 Sign Out" onAction="#handleLogout" styleClass="btn-danger" style="-fx-font-weight: bold;"/>
     </HBox>
 
-    <!-- Top 4 System Metrics -->
-    <HBox spacing="16.0">
+    <!-- Top 6 Academic & System Metrics -->
+    <HBox spacing="12.0">
         <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
-            <Label text="TOTAL STUDENTS" styleClass="card-stat-label"/>
+            <Label text="ENROLLED STUDENTS" styleClass="card-stat-label"/>
             <Label fx:id="totalStudentsLabel" text="0" styleClass="card-stat-value"/>
         </VBox>
         <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
-            <Label text="CODING PROBLEMS" styleClass="card-stat-label"/>
-            <Label fx:id="totalProblemsLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #3fb950;"/>
+            <Label text="AVERAGE ATTENDANCE" styleClass="card-stat-label"/>
+            <Label fx:id="avgAttendanceLabel" text="96.4%" styleClass="card-stat-value" style="-fx-text-fill: #3fb950;"/>
         </VBox>
         <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
-            <Label text="BATTLES CREATED" styleClass="card-stat-label"/>
+            <Label text="HIGHEST STREAK" styleClass="card-stat-label"/>
+            <Label fx:id="highestStreakLabel" text="🔥 18 days" styleClass="card-stat-value" style="-fx-text-fill: #f59e0b;"/>
+        </VBox>
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="CODING PROBLEMS" styleClass="card-stat-label"/>
+            <Label fx:id="totalProblemsLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #38bdf8;"/>
+        </VBox>
+        <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
+            <Label text="SCHEDULED CONTESTS" styleClass="card-stat-label"/>
             <Label fx:id="totalBattlesLabel" text="0" styleClass="card-stat-value" style="-fx-text-fill: #e3b341;"/>
         </VBox>
         <VBox styleClass="card" spacing="4.0" HBox.hgrow="ALWAYS">
@@ -42,13 +53,106 @@
         </VBox>
     </HBox>
 
-    <!-- Admin Tabs Container -->
+    <!-- Faculty Tabs Container -->
     <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" styleClass="card" style="-fx-padding: 8px;">
 
-        <!-- Tab 1: Problems Management -->
+        <!-- TAB 1: EXAMS & COURSEWORK (NEW) -->
+        <Tab text="📝 Exams &amp; Coursework">
+            <SplitPane dividerPositions="0.55" style="-fx-background-color: transparent;">
+                <!-- Left: Scheduled Assignments & Grading Roster -->
+                <VBox spacing="10.0" style="-fx-padding: 8px;">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Label text="Scheduled Exams &amp; Assignments" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
+                        <Button text="⏳ Extend Deadline (+24h)" onAction="#handleExtendDeadline" styleClass="btn-accent" style="-fx-font-size: 11px;"/>
+                    </HBox>
+
+                    <TableView fx:id="adminAssignmentsTable" prefHeight="220.0">
+                        <columns>
+                            <TableColumn fx:id="colAssignId" text="ID" prefWidth="50.0"/>
+                            <TableColumn fx:id="colAssignTitle" text="Title" prefWidth="220.0"/>
+                            <TableColumn fx:id="colAssignCategory" text="Category" prefWidth="120.0"/>
+                            <TableColumn fx:id="colAssignDeadline" text="Deadline" prefWidth="130.0"/>
+                            <TableColumn fx:id="colAssignMarks" text="Marks" prefWidth="70.0"/>
+                            <TableColumn fx:id="colAssignSubmissions" text="Turned In" prefWidth="90.0"/>
+                            <TableColumn fx:id="colAssignStatus" text="Status" prefWidth="80.0"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+
+                    <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-padding: 4 0;">
+                        <Label text="Submissions Roster &amp; Evaluation Roster" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
+                        <Button text="✏️ Adjust Selected Score" onAction="#handleAdjustScore" styleClass="btn-primary" style="-fx-font-size: 11px;"/>
+                    </HBox>
+
+                    <TableView fx:id="assignmentSubmissionsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colRosterStudent" text="Student Name" prefWidth="160.0"/>
+                            <TableColumn fx:id="colRosterScore" text="Marks" prefWidth="90.0"/>
+                            <TableColumn fx:id="colRosterTestCases" text="Test Cases" prefWidth="100.0"/>
+                            <TableColumn fx:id="colRosterVerdict" text="Verdict" prefWidth="140.0"/>
+                            <TableColumn fx:id="colRosterStatus" text="Status" prefWidth="90.0"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+
+                <!-- Right: Schedule New Exam / Assignment Form -->
+                <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+                    <VBox spacing="10.0" style="-fx-padding: 10px;">
+                        <Label text="Schedule New Examination or Coursework" styleClass="heading-medium"/>
+
+                        <TextField fx:id="assignTitleField" promptText="Exam Title (e.g. Midterm 1: Arrays &amp; Memory)"/>
+                        <TextArea fx:id="assignDescArea" promptText="Exam instructions, proctoring rules, and problem details..." prefRowCount="3"/>
+
+                        <HBox spacing="10.0">
+                            <TextField fx:id="assignCategoryField" text="Data Structures" promptText="Category" prefWidth="160.0"/>
+                            <TextField fx:id="assignDurationField" text="60" promptText="Duration (minutes)" prefWidth="120.0"/>
+                            <TextField fx:id="assignMarksField" text="100" promptText="Total Marks" prefWidth="100.0"/>
+                        </HBox>
+
+                        <CheckBox fx:id="assignProctoringCheck" selected="true" text="Enable Real-Time Proctoring &amp; Tab-Switch Detection" textFill="#93c5fd" style="-fx-font-weight: bold;"/>
+
+                        <Label text="Select Exam Problems (Hold Ctrl for multiple):" styleClass="card-stat-label"/>
+                        <ListView fx:id="assignProblemsListView" prefHeight="140.0"/>
+
+                        <Button text="🚀 Publish Exam to Students" onAction="#handleCreateAssignment" maxWidth="Infinity" styleClass="btn-primary" style="-fx-font-weight: bold; -fx-padding: 10;"/>
+                    </VBox>
+                </ScrollPane>
+            </SplitPane>
+        </Tab>
+
+        <!-- TAB 2: STUDENTS ATTENTION & STREAKS -->
+        <Tab text="👥 Students &amp; Streak Tracking">
+            <VBox spacing="10.0" style="-fx-padding: 8px;">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="Student Enrolment Directory &amp; Academic Attention Telemetry" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
+                    <Button text="🗑️ Remove Student" onAction="#handleDeleteStudent" styleClass="btn-danger" style="-fx-font-size: 11px;"/>
+                </HBox>
+                <TableView fx:id="adminStudentsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colStudId" text="ID" prefWidth="50.0"/>
+                        <TableColumn fx:id="colStudUsername" text="Username" prefWidth="140.0"/>
+                        <TableColumn fx:id="colStudEmail" text="Email" prefWidth="200.0"/>
+                        <TableColumn fx:id="colStudPoints" text="Total Points" prefWidth="100.0"/>
+                        <TableColumn fx:id="colStudSolved" text="Solved" prefWidth="90.0"/>
+                        <TableColumn fx:id="colStudStreak" text="Streak (Daily)" prefWidth="120.0"/>
+                        <TableColumn fx:id="colStudAttendance" text="Attendance %" prefWidth="110.0"/>
+                        <TableColumn fx:id="colStudRisk" text="Attention Status" prefWidth="130.0"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 3: PROBLEMS MANAGEMENT -->
         <Tab text="💻 Manage Problems">
             <SplitPane dividerPositions="0.55" style="-fx-background-color: transparent;">
-                <!-- Problems Table -->
                 <VBox spacing="10.0" style="-fx-padding: 8px;">
                     <HBox alignment="CENTER_LEFT">
                         <Label text="Platform Coding Problems" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
@@ -68,7 +172,6 @@
                     </TableView>
                 </VBox>
 
-                <!-- Add Problem Form -->
                 <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
                     <VBox spacing="10.0" style="-fx-padding: 8px;">
                         <Label text="Add New Coding Problem" styleClass="heading-medium"/>
@@ -97,7 +200,7 @@
             </SplitPane>
         </Tab>
 
-        <!-- Tab 2: Manage Test Cases -->
+        <!-- TAB 4: TEST CASES -->
         <Tab text="🧪 Test Cases">
             <SplitPane dividerPositions="0.55" style="-fx-background-color: transparent;">
                 <VBox spacing="10.0" style="-fx-padding: 8px;">
@@ -134,7 +237,7 @@
             </SplitPane>
         </Tab>
 
-        <!-- Tab 3: Manage Battles -->
+        <!-- TAB 5: BATTLES MANAGEMENT -->
         <Tab text="⚔️ Manage Battles">
             <SplitPane dividerPositions="0.55" style="-fx-background-color: transparent;">
                 <VBox spacing="10.0" style="-fx-padding: 8px;">
@@ -169,29 +272,7 @@
             </SplitPane>
         </Tab>
 
-        <!-- Tab 4: Manage Students -->
-        <Tab text="👥 Registered Students">
-            <VBox spacing="10.0" style="-fx-padding: 8px;">
-                <HBox alignment="CENTER_LEFT">
-                    <Label text="Student Enrolment Directory" styleClass="heading-medium" HBox.hgrow="ALWAYS"/>
-                    <Button text="🗑️ Remove Student" onAction="#handleDeleteStudent" styleClass="btn-danger" style="-fx-font-size: 11px;"/>
-                </HBox>
-                <TableView fx:id="adminStudentsTable" VBox.vgrow="ALWAYS">
-                    <columns>
-                        <TableColumn fx:id="colStudId" text="ID" prefWidth="60.0"/>
-                        <TableColumn fx:id="colStudUsername" text="Username" prefWidth="200.0"/>
-                        <TableColumn fx:id="colStudEmail" text="Email" prefWidth="260.0"/>
-                        <TableColumn fx:id="colStudPoints" text="Total Points" prefWidth="140.0"/>
-                        <TableColumn fx:id="colStudSolved" text="Solved Challenges" prefWidth="160.0"/>
-                    </columns>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-                    </columnResizePolicy>
-                </TableView>
-            </VBox>
-        </Tab>
-
-        <!-- Tab 5: Submission Audit Log -->
+        <!-- TAB 6: SUBMISSION AUDIT LOG -->
         <Tab text="📜 Submission Audit Log">
             <VBox spacing="10.0" style="-fx-padding: 8px;">
                 <Label text="Platform Solution Submissions" styleClass="heading-medium"/>

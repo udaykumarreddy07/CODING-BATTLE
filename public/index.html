@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Battle Platform - Competitive Programming Arena</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+</head>
+<body class="theme-light">
+
+    <!-- =============================================================
+         AESTHETIC LOGIN PAGE (FULL SCREEN EXPERIENCE)
+         ============================================================= -->
+    <div id="login-view" class="login-view-wrapper">
+        <!-- Ambient Animated Glow Orbs & Grid Overlay -->
+        <div class="login-bg-glow glow-1"></div>
+        <div class="login-bg-glow glow-2"></div>
+        <div class="login-bg-glow glow-3"></div>
+        <div class="login-grid-overlay"></div>
+
+        <div class="login-card-container">
+            <!-- Glassmorphic Cyberpunk Login Card -->
+            <div class="login-card">
+                <!-- Top Brand Badge & Logo -->
+                <div class="login-header">
+                    <div class="login-logo-wrapper">
+                        <div class="login-logo-glow"></div>
+                        <div class="login-logo-box">
+                            <img src="images/logo.png" alt="Coding Battle Logo" class="login-logo-img">
+                        </div>
+                    </div>
+                    <div class="login-brand-meta">
+                        <div class="login-badge-pill">
+                            <span class="live-dot"></span> ARENA SYSTEM ONLINE
+                        </div>
+                        <h1 class="login-title">CODING BATTLE</h1>
+                        <p class="login-subtitle">Competitive Java Programming &amp; Algorithm Arena</p>
+                    </div>
+                </div>
+
+                <!-- Unified Role Selector: Student Login vs Faculty Login -->
+                <div class="auth-role-tabs" role="tablist">
+                    <button type="button" class="auth-role-btn student active" id="auth-role-student" role="tab" aria-selected="true">
+                        <span class="role-btn-icon">🎓</span>
+                        <div class="role-btn-details">
+                            <span class="role-btn-title">Student Login</span>
+                            <span class="role-btn-badge">Battle Arena &amp; Code Practice</span>
+                        </div>
+                    </button>
+                    <button type="button" class="auth-role-btn faculty" id="auth-role-faculty" role="tab" aria-selected="false">
+                        <span class="role-btn-icon">🛡️</span>
+                        <div class="role-btn-details">
+                            <span class="role-btn-title">Faculty Login</span>
+                            <span class="role-btn-badge">Evaluator &amp; Command Portal</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- =========================================================
+                     1. STUDENT AUTHENTICATION CONTAINER
+                     ========================================================= -->
+                <div id="auth-student-container">
+                    <!-- Tabs: Sign In / Create Account -->
+                    <div class="auth-segmented-tabs">
+                        <button class="auth-tab-btn active" id="tab-btn-signin" type="button">
+                            <span class="tab-icon">🔑</span> Sign In
+                        </button>
+                        <button class="auth-tab-btn" id="tab-btn-register" type="button">
+                            <span class="tab-icon">✨</span> Create Account
+                        </button>
+                    </div>
+
+                    <!-- Social Logins (Google & GitHub) -->
+                    <div class="social-login-grid">
+                        <button type="button" class="btn-social-auth btn-google" id="btn-login-google" title="Sign in with your Google Account">
+                            <svg class="social-icon-svg" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.36 7.33 24 12 24z"/>
+                                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.97 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/>
+                                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                            </svg>
+                            <span>Continue with Google</span>
+                        </button>
+                        <button type="button" class="btn-social-auth btn-github" id="btn-login-github" title="Sign in with your GitHub Account">
+                            <svg class="social-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                            </svg>
+                            <span>Continue with GitHub</span>
+                        </button>
+                    </div>
+
+                    <!-- Or Divider -->
+                    <div class="auth-or-divider">
+                        <span>or continue with student account</span>
+                    </div>
+
+                    <!-- Student Sign In Form -->
+                    <form id="main-login-form" class="auth-card-form">
+                        <div class="form-group">
+                            <label class="form-label" for="login-username">
+                                <span>STUDENT USERNAME OR EMAIL</span>
+                                <span class="label-hint">rahul or rahul@student.edu</span>
+                            </label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="login-username" class="login-input" placeholder="Enter username or campus email" required autocomplete="username">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-row">
+                                <label class="form-label" for="login-password">STUDENT PASSWORD</label>
+                                <span class="forgot-link" id="btn-toggle-demo-help" title="Click to view demo info">Demo: student123</span>
+                            </div>
+                            <div class="input-with-icon">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="login-password" class="login-input" placeholder="••••••••" required autocomplete="current-password">
+                                <button type="button" class="btn-toggle-password" id="btn-toggle-login-pwd" title="Show/hide password">👁️</button>
+                            </div>
+                        </div>
+
+                        <div class="auth-options-row">
+                            <label class="remember-checkbox">
+                                <input type="checkbox" id="login-remember" checked>
+                                <span class="custom-check"></span>
+                                <span class="checkbox-text">Keep me signed in</span>
+                            </label>
+                        </div>
+
+                        <div id="login-error-box" class="auth-alert-box error" style="display: none;"></div>
+                        <div id="login-success-box" class="auth-alert-box success" style="display: none;"></div>
+
+                        <button type="submit" id="btn-submit-login" class="btn-battle-submit">
+                            <span class="btn-sparkle">⚡</span>
+                            <span class="btn-label">ENTER STUDENT ARENA</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+
+                    <!-- Student Register Form (Initially Hidden) -->
+                    <form id="main-register-form" class="auth-card-form" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label" for="reg-username">CHOOSE USERNAME</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="reg-username" class="login-input" placeholder="Choose a username (3-20 chars)" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="reg-email">CAMPUS EMAIL</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">✉️</span>
+                                <input type="email" id="reg-email" class="login-input" placeholder="coder@student.edu" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="reg-password">PASSWORD</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="reg-password" class="login-input" placeholder="At least 4 characters" required>
+                                <button type="button" class="btn-toggle-password" id="btn-toggle-reg-pwd" title="Show/hide password">👁️</button>
+                            </div>
+                        </div>
+
+                        <div id="reg-error-box" class="auth-alert-box error" style="display: none;"></div>
+                        <div id="reg-success-box" class="auth-alert-box success" style="display: none;"></div>
+
+                        <button type="submit" id="btn-submit-reg" class="btn-battle-submit reg-btn">
+                            <span class="btn-sparkle">🚀</span>
+                            <span class="btn-label">CREATE STUDENT PROFILE</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+
+                    <!-- Quick Demo 1-Click for Student -->
+                    <div class="demo-section-divider">
+                        <span>⚡ 1-CLICK INSTANT STUDENT DEMO</span>
+                    </div>
+
+                    <button class="demo-card-btn student" style="width: 100%; display: flex; align-items: center; justify-content: flex-start; padding: 12px 16px;" type="button" id="quick-demo-student">
+                        <div class="demo-card-icon">🎓</div>
+                        <div class="demo-card-info" style="text-align: left; margin-left: 8px;">
+                            <div class="demo-card-title">Instant Student Login (Rahul)</div>
+                            <div class="demo-card-creds">rahul / student123 • Rank #1 • 510 XP</div>
+                        </div>
+                        <span class="demo-card-tag" style="margin-left: auto;">Instant Arena Access →</span>
+                    </button>
+                </div>
+
+                <!-- =========================================================
+                     2. FACULTY AUTHENTICATION CONTAINER
+                     ========================================================= -->
+                <div id="auth-faculty-container" style="display: none;">
+                    <div class="faculty-access-banner">
+                        <div class="faculty-banner-shield">🛡️</div>
+                        <div class="faculty-banner-text">
+                            <div class="faculty-banner-title">Faculty &amp; Evaluator Command Portal</div>
+                            <div class="faculty-banner-desc">Manage exams, assignments, student streaks, live proctoring &amp; submissions.</div>
+                        </div>
+                    </div>
+
+                    <!-- Faculty Login Form -->
+                    <form id="faculty-login-form" class="auth-card-form">
+                        <div class="form-group">
+                            <label class="form-label" for="faculty-username">
+                                <span>FACULTY USERNAME / ID</span>
+                                <span class="label-hint">admin or faculty@university.edu</span>
+                            </label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">🛡️</span>
+                                <input type="text" id="faculty-username" class="login-input" value="admin" placeholder="e.g. admin" required autocomplete="username">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-row">
+                                <label class="form-label" for="faculty-password">FACULTY MASTER KEY</label>
+                                <span class="forgot-link" id="btn-toggle-faculty-creds" title="Faculty demo credentials">Default: admin123</span>
+                            </div>
+                            <div class="input-with-icon">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="faculty-password" class="login-input" value="admin123" placeholder="••••••••" required autocomplete="current-password">
+                                <button type="button" class="btn-toggle-password" id="btn-toggle-faculty-pwd" title="Show/hide password">👁️</button>
+                            </div>
+                        </div>
+
+                        <div class="auth-options-row">
+                            <label class="remember-checkbox">
+                                <input type="checkbox" id="faculty-remember" checked>
+                                <span class="custom-check"></span>
+                                <span class="checkbox-text">Keep faculty session active</span>
+                            </label>
+                            <span style="font-size: 11px; color: #a5b4fc;">🔒 High Security</span>
+                        </div>
+
+                        <div id="faculty-error-box" class="auth-alert-box error" style="display: none;"></div>
+                        <div id="faculty-success-box" class="auth-alert-box success" style="display: none;"></div>
+
+                        <button type="submit" id="btn-submit-faculty" class="btn-battle-submit btn-faculty-submit">
+                            <span class="btn-sparkle">🛡️</span>
+                            <span class="btn-label">ENTER FACULTY COMMAND PORTAL</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+
+                    <!-- Quick Demo 1-Click for Faculty -->
+                    <div class="demo-section-divider">
+                        <span>⚡ 1-CLICK INSTANT FACULTY ACCESS</span>
+                    </div>
+
+                    <button class="demo-card-btn admin" style="width: 100%; display: flex; align-items: center; justify-content: flex-start; padding: 12px 16px;" type="button" id="quick-demo-admin" title="Instant Faculty Portal Access">
+                        <div class="demo-card-icon">⚡</div>
+                        <div class="demo-card-info" style="text-align: left; margin-left: 8px;">
+                            <div class="demo-card-title">Instant Faculty Login (Prof. Alexander)</div>
+                            <div class="demo-card-creds">admin / admin123 • Chief Evaluator</div>
+                        </div>
+                        <span class="demo-card-tag admin-tag" style="margin-left: auto;">Launch Portal →</span>
+                    </button>
+                </div>
+
+                <!-- Footer Feature Chips -->
+                <div class="login-features-footer">
+                    <div class="feature-chip"><span class="chip-dot"></span> Java 21 Sandbox</div>
+                    <div class="feature-chip"><span class="chip-dot"></span> Live Battles</div>
+                    <div class="feature-chip"><span class="chip-dot"></span> DSA QuickSort Ranks</div>
+                </div>
+
+                <!-- Return to Dashboard if session is active -->
+                <div id="login-return-option" style="display: none; text-align: center; margin-top: 14px;">
+                    <button type="button" class="btn-return-arena" id="btn-return-dashboard">
+                        ← Continue into Arena as <strong id="return-username">Rahul</strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google OAuth Account Picker Modal -->
+        <div class="oauth-modal-backdrop" id="google-oauth-modal" style="display: none;">
+            <div class="oauth-modal-card google-card">
+                <div class="oauth-modal-header">
+                    <svg class="google-modal-logo" viewBox="0 0 24 24" width="28" height="28">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.36 7.33 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.97 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                    </svg>
+                    <div>
+                        <h3 class="oauth-modal-title">Sign in with Google</h3>
+                        <p class="oauth-modal-subtitle">Choose an account to continue to Coding Battle</p>
+                    </div>
+                    <button type="button" class="btn-close-oauth" id="btn-close-google-oauth">✕</button>
+                </div>
+
+                <div class="oauth-account-list">
+                    <button type="button" class="oauth-account-item" data-oauth-email="rahul@student.edu" data-oauth-name="Rahul Sharma">
+                        <div class="oauth-avatar" style="background: #2563eb;">R</div>
+                        <div class="oauth-account-details">
+                            <span class="oauth-account-name">Rahul Sharma</span>
+                            <span class="oauth-account-email">rahul@student.edu</span>
+                        </div>
+                        <span class="oauth-badge-tag">Student</span>
+                    </button>
+
+                    <button type="button" class="oauth-account-item" data-oauth-email="admin@battle.edu" data-oauth-name="System Admin">
+                        <div class="oauth-avatar" style="background: #d97706;">A</div>
+                        <div class="oauth-account-details">
+                            <span class="oauth-account-name">System Administrator</span>
+                            <span class="oauth-account-email">admin@battle.edu</span>
+                        </div>
+                        <span class="oauth-badge-tag admin">Admin</span>
+                    </button>
+
+                    <div class="oauth-custom-input-box">
+                        <span class="oauth-custom-label">Or use custom Google account:</span>
+                        <div class="oauth-inline-form">
+                            <input type="email" id="custom-google-email" placeholder="coder@gmail.com" class="login-input" style="padding-left: 14px;">
+                            <button type="button" id="btn-submit-custom-google" class="btn btn-primary" style="font-size: 12px; padding: 0 16px;">Sign In</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub OAuth Modal -->
+        <div class="oauth-modal-backdrop" id="github-oauth-modal" style="display: none;">
+            <div class="oauth-modal-card github-card">
+                <div class="oauth-modal-header">
+                    <svg class="github-modal-logo" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                    <div>
+                        <h3 class="oauth-modal-title">Authorize with GitHub</h3>
+                        <p class="oauth-modal-subtitle">Connect your developer profile to Coding Battle</p>
+                    </div>
+                    <button type="button" class="btn-close-oauth" id="btn-close-github-oauth">✕</button>
+                </div>
+
+                <div class="oauth-account-list">
+                    <div style="padding: 12px; background: rgba(13, 17, 23, 0.7); border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 12px; font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
+                        Authorizing links your GitHub account with the live Java battle arena, enabling global DSA standings.
+                    </div>
+
+                    <button type="button" class="oauth-account-item" id="btn-auth-github-rahul" data-oauth-email="rahul@student.edu" data-oauth-name="rahul">
+                        <div class="oauth-avatar" style="background: #1f2937;">🐙</div>
+                        <div class="oauth-account-details">
+                            <span class="oauth-account-name">rahul (Student Profile)</span>
+                            <span class="oauth-account-email">rahul@student.edu</span>
+                        </div>
+                        <span class="oauth-badge-tag">Authorize</span>
+                    </button>
+
+                    <div class="oauth-custom-input-box">
+                        <span class="oauth-custom-label">Or connect with GitHub username:</span>
+                        <div class="oauth-inline-form">
+                            <input type="text" id="custom-github-user" placeholder="octocat" class="login-input" style="padding-left: 14px;">
+                            <button type="button" id="btn-submit-custom-github" class="btn btn-primary" style="font-size: 12px; padding: 0 16px;">Authorize</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-container" class="theme-light">
+        <!-- =============================================================
+             LEFT SIDEBAR NAVIGATION
+             ============================================================= -->
+        <aside class="sidebar" id="app-sidebar">
+            <button class="sidebar-toggle-btn" id="btn-sidebar-toggle" onclick="app.toggleSidebar()" title="Collapse / Expand Sidebar (Toggle More Space)">
+                ◀
+            </button>
+            <div class="brand">
+                <div class="brand-icon-wrapper">
+                    <img src="images/logo.png" alt="Coding Battle Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-title-container">
+                    <div class="brand-title-wrap">
+                        <div class="brand-title">CODING BATTLE</div>
+                        <span class="brand-side-blink-dot" id="brand-side-blink-dot" title="System Live"></span>
+                    </div>
+                    <div class="brand-subtitle">Interactive Arena</div>
+                </div>
+            </div>
+
+            <!-- Current Authenticated User -->
+            <div class="sidebar-user-card" id="sidebar-user-widget">
+                <span class="user-card-role" id="user-role-label">CURRENT CODER</span>
+                <span class="user-card-name" id="user-name-label">Rahul (Student)</span>
+                <span class="user-card-badge" id="user-points-badge">⭐ 510 pts</span>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-view="dashboard" id="nav-btn-student-dash">
+                    <span class="nav-icon">📊</span> <span id="nav-dash-label">Student Dashboard</span>
+                </button>
+                <button class="nav-btn" data-view="practice">
+                    <span class="nav-icon">💻</span> Practice Problems
+                </button>
+                <button class="nav-btn" data-view="assignments" id="nav-assignments-btn">
+                    <span class="nav-icon">📝</span> Exams &amp; Assignments
+                    <span class="nav-badge" id="nav-assignments-badge" style="display: none; background: #8b5cf6; color: #fff; font-size: 10px; font-weight: 800; padding: 1px 7px; border-radius: 10px; margin-left: auto;">2</span>
+                </button>
+                <button class="nav-btn" data-view="battles">
+                    <span class="nav-icon">⚔️</span> Coding Battles
+                </button>
+                <button class="nav-btn" data-view="leaderboard">
+                    <span class="nav-icon">🏆</span> Leaderboard
+                </button>
+                <button class="nav-btn" data-view="performance">
+                    <span class="nav-icon">📈</span> Performance &amp; Badges
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <button class="btn-sound-toggle active" id="btn-sound-toggle" onclick="app.toggleSound()" title="Toggle Web Audio Sound Effects" style="flex: 1;">🔊 SFX: ON</button>
+                    <button class="btn btn-secondary" onclick="app.openShortcutsModal()" title="View Keyboard Shortcuts" style="padding: 4px 10px; font-size: 11px;">⌨️ Shortcuts</button>
+                </div>
+                <button class="nav-btn btn-signout" id="btn-logout">
+                    <span class="nav-icon">🚪</span> Switch User / Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- =============================================================
+             MAIN DYNAMIC CONTENT
+             ============================================================= -->
+        <main class="main-content">
+            
+            <!-- 1. STUDENT DASHBOARD VIEW -->
+            <section id="view-dashboard" class="view-section active">
+                <!-- Dashboard Top Header & Actions -->
+                <div class="dashboard-header">
+                    <div>
+                        <div class="dash-logo-status-badge">
+                            <img src="images/logo.png" alt="Coding Battle Logo" class="dash-mini-logo">
+                            <span class="pulse-dot-ring">
+                                <span class="blinking-dot green-dot"></span>
+                            </span>
+                            <span class="dash-status-text">STUDENT CODER ARENA • ONLINE</span>
+                        </div>
+                        <h1 class="heading-large" id="dash-greeting">Welcome back, Rahul!</h1>
+                        <p class="subheading">Comprehensive Java course progress, performance milestones, and practice arena.</p>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                        <button class="btn btn-secondary" id="dash-refresh-btn" onclick="app.loadDashboard()">
+                            <span>🔄</span> Refresh Data
+                        </button>
+                        <button class="btn btn-secondary" onclick="app.navigateTo('leaderboard')">
+                            <span>🏆</span> Leaderboard
+                        </button>
+                        <button class="btn btn-primary" onclick="app.navigateTo('practice')">
+                            <span>💻</span> Practice Arena
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Task Broadcast Banner (Auto-populated when admin assigns any task) -->
+                <div id="dash-live-task-banner" class="dash-urgent-task-banner" style="display: none;">
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <div class="toast-icon-pulse" style="width: 38px; height: 38px; font-size: 18px;">🔔</div>
+                        <div>
+                            <div style="font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #ec4899; text-transform: uppercase;">
+                                📢 DIRECT FACULTY TASK DISPATCH
+                            </div>
+                            <strong id="banner-task-title" style="font-size: 14px; color: #fff;">Midterm Java Examination Assigned</strong>
+                            <div id="banner-task-meta" style="font-size: 11.5px; color: var(--text-secondary); margin-top: 2px;">
+                                Due: Oct 9 • Max Marks: 100 • ⏱️ 60m
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <button class="btn btn-primary" id="btn-banner-start-task" style="font-size: 12px; padding: 7px 16px; background: linear-gradient(135deg, #8b5cf6, #ec4899); border: none;">
+                            Solve Task Now 🚀
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Student Profile & Standing Banner -->
+                <div class="dash-hero-card">
+                    <div class="dash-hero-left">
+                        <div class="dash-hero-avatar" id="dash-hero-avatar">R</div>
+                        <div class="dash-hero-details">
+                            <div class="dash-hero-tags">
+                                <span class="badge badge-gold" id="dash-hero-league">💎 GRANDMASTER LEAGUE</span>
+                                <span class="badge badge-easy" id="dash-hero-role">STUDENT CODER</span>
+                                <span class="badge badge-live">🔥 ACTIVE TODAY</span>
+                            </div>
+                            <h2 class="dash-hero-name" id="dash-hero-fullname">Rahul Sharma</h2>
+                            <p class="dash-hero-meta" id="dash-hero-meta">@rahul • rahul@student.edu • Java 21 Arena</p>
+                        </div>
+                    </div>
+
+                    <div class="dash-hero-right">
+                        <div class="dash-hero-streak-box">
+                            <div class="streak-icon">🔥</div>
+                            <div>
+                                <div class="streak-val" id="dash-streak-count">7 DAYS</div>
+                                <div class="streak-label">CODING STREAK</div>
+                            </div>
+                        </div>
+
+                        <!-- 7-Day Interactive Streak Calendar Tracker -->
+                        <div class="streak-calendar-row" id="dash-streak-calendar" title="Your 7-day coding activity tracker">
+                            <div class="streak-dot active" title="Monday: Solved 2 problems">M</div>
+                            <div class="streak-dot active" title="Tuesday: Solved 1 problem">T</div>
+                            <div class="streak-dot active" title="Wednesday: Solved 3 problems">W</div>
+                            <div class="streak-dot active" title="Thursday: Solved 1 problem">T</div>
+                            <div class="streak-dot active" title="Friday: Solved 2 problems">F</div>
+                            <div class="streak-dot active" title="Saturday: Battle Won">S</div>
+                            <div class="streak-dot today" title="Sunday (Today): Active streak 🔥">S</div>
+                        </div>
+
+                        <!-- Instant Daily Login XP Bonus Claim Button -->
+                        <button class="btn-claim-streak" id="btn-claim-daily-xp" onclick="app.claimDailyBonus()">
+                            <span>🎁</span> <span id="claim-streak-btn-label">Claim Daily Bonus (+25 XP)</span>
+                        </button>
+
+                        <div class="dash-tier-progress-box" style="margin-top: 10px;">
+                            <div class="tier-labels">
+                                <span class="tier-label-left">TIER PROGRESS</span>
+                                <span class="tier-label-right" id="dash-tier-xp-label">510 / 750 XP to Elite</span>
+                            </div>
+                            <div class="tier-bar-bg">
+                                <div class="tier-bar-fill" id="dash-tier-bar-fill" style="width: 68%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 High-Impact Stat KPI Cards (Interactive 3D Hover & Click Navigation) -->
+                <div class="stat-grid-6">
+                    <div class="stat-card stat-card-interactive" onclick="app.navigateTo('leaderboard')" title="Click to view Global Leaderboard standings">
+                        <div class="stat-card-header">
+                            <span class="stat-label">Global Rank</span>
+                            <span class="stat-card-icon">🏆</span>
+                        </div>
+                        <span class="stat-value" style="color: var(--accent-gold);" id="dash-stat-rank">#1</span>
+                        <div class="stat-card-footer-action">
+                            <span class="stat-desc">Top 0.5% of Coders</span>
+                            <span class="stat-action-arrow">Standings →</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card-interactive" onclick="app.navigateTo('leaderboard')" title="Click to view XP Leaderboard">
+                        <div class="stat-card-header">
+                            <span class="stat-label">Total Points</span>
+                            <span class="stat-card-icon">⭐</span>
+                        </div>
+                        <span class="stat-value" style="color: var(--accent-green);" id="dash-stat-points">510</span>
+                        <div class="stat-card-footer-action">
+                            <span class="stat-desc">XP Earned to Date</span>
+                            <span class="stat-action-arrow">View Tier →</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card-interactive" onclick="app.navigateTo('practice')" title="Click to solve problems in Practice Arena">
+                        <div class="stat-card-header">
+                            <span class="stat-label">Solved Problems</span>
+                            <span class="stat-card-icon">🎯</span>
+                        </div>
+                        <span class="stat-value" id="dash-stat-solved">5 / 25</span>
+                        <div class="stat-card-footer-action">
+                            <span class="stat-desc" id="dash-stat-solved-pct">20% Completed</span>
+                            <span class="stat-action-arrow">Practice →</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card-interactive" onclick="app.navigateTo('performance')" title="Click to view detailed accuracy analytics">
+                        <div class="stat-card-header">
+                            <span class="stat-label">Accuracy Rate</span>
+                            <span class="stat-card-icon">📈</span>
+                        </div>
+                        <span class="stat-value" style="color: var(--accent-blue);" id="dash-stat-accuracy">83.3%</span>
+                        <div class="stat-card-footer-action">
+                            <span class="stat-desc">Accepted Rate</span>
+                            <span class="stat-action-arrow">Analytics →</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card-interactive" onclick="app.navigateTo('performance')" title="Click to inspect runtime benchmarks">
+                        <div class="stat-card-header">
+                            <span class="stat-label">Avg Runtime</span>
+                            <span class="stat-card-icon">⚡</span>
+                        </div>
+                        <span class="stat-value" style="color: #38bdf8;" id="dash-stat-runtime">268 ms</span>
+                        <div class="stat-card-footer-action">
+                            <span class="stat-desc">Top 10% Fastest</span>
+                            <span class="stat-action-arrow">Benchmarks →</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card-interactive" onclick="app.navigateTo('battles')" title="Click to enter Live Battle Arena">
+                        <div class="stat-card-header">
+                            <span class="stat-label">Arena Battles</span>
+                            <span class="stat-card-icon">⚔️</span>
+                        </div>
+                        <span class="stat-value" style="color: var(--accent-purple);" id="dash-stat-battles">1 Won</span>
+                        <div class="stat-card-footer-action">
+                            <span class="stat-desc">100% Win Ratio</span>
+                            <span class="stat-action-arrow">Enter Battle →</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- 1. Assigned Coursework & Proctored Examinations (High Priority) -->
+                <div class="card" id="student-assignments-card" style="margin-top: 20px; border-left: 4px solid #6366f1;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 24px;">📝</span>
+                            <div>
+                                <h3 class="card-title" style="margin: 0; font-size: 16px;">Assigned Examinations &amp; Coursework Tasks</h3>
+                                <p style="font-size: 11px; color: var(--text-secondary); margin: 0;">Official exams and homework lab tasks assigned by Academic Faculty</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <button class="btn btn-primary" onclick="app.navigateTo('assignments')" style="font-size: 12px; padding: 6px 14px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none; font-weight: 700; box-shadow: 0 0 14px rgba(99, 102, 241, 0.35);">
+                                🚀 View All Tasks &amp; Exams
+                            </button>
+                        </div>
+                    </div>
+                    <div id="dash-assignments-feed" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px;">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- 2. Recent Submissions Table & Audit Log -->
+                <div class="card" style="margin-top: 20px; border-left: 4px solid #0ea5e9;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 22px;">⚡</span>
+                            <div>
+                                <h3 class="card-title" style="margin: 0; font-size: 16px;">Recent Submissions &amp; Code Audit Log</h3>
+                                <p style="font-size: 11px; color: var(--text-secondary); margin: 0;">Your latest code evaluations, scores, and execution benchmarks</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="app.navigateTo('performance')" style="font-size: 11px; padding: 6px 12px;">Detailed Analytics →</button>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Problem Title</th>
+                                    <th>Verdict</th>
+                                    <th>Score</th>
+                                    <th>Execution Time</th>
+                                    <th>Test Cases</th>
+                                    <th>Submitted At</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dash-recent-subs-body">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2-Column Split Section: Problem Breakdown vs Live Arena & Daily Quest -->
+                <div class="dash-split-grid">
+                    <!-- Left Column: Problem Breakdown & Topic Mastery -->
+                    <div class="card" style="display: flex; flex-direction: column; gap: 18px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h3 class="card-title" style="margin-bottom: 2px;">CSE201 Syllabus Unit Progress</h3>
+                                <p style="font-size: 11px; color: var(--text-secondary);">Core Java programming course curriculum progress across 5 units</p>
+                            </div>
+                            <span class="badge badge-accent" id="dash-total-solved-badge" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">5 Solved</span>
+                        </div>
+
+                        <!-- Progress Meters for 5 Syllabus Units -->
+                        <div class="difficulty-meters-list">
+                            <div class="diff-meter-item diff-meter-interactive" onclick="app.filterByTopic('UNIT_1_OOPS')" title="Click to solve Unit 1 challenges (8 total)">
+                                <div class="diff-meter-labels">
+                                    <span class="diff-title" style="color: #60a5fa;">📘 Unit 1: OOPs &amp; Java Basics <span class="diff-action-hint">Practice →</span></span>
+                                    <span class="diff-count" id="dash-unit1-count">0 / 8 (0%)</span>
+                                </div>
+                                <div class="meter-bar-track">
+                                    <div class="meter-bar-fill" id="dash-unit1-bar" style="width: 0%; background: #3b82f6;"></div>
+                                </div>
+                            </div>
+
+                            <div class="diff-meter-item diff-meter-interactive" onclick="app.filterByTopic('UNIT_2_INHERITANCE')" title="Click to solve Unit 2 challenges (8 total)">
+                                <div class="diff-meter-labels">
+                                    <span class="diff-title" style="color: #a78bfa;">📙 Unit 2: Inheritance &amp; Interfaces <span class="diff-action-hint">Practice →</span></span>
+                                    <span class="diff-count" id="dash-unit2-count">0 / 8 (0%)</span>
+                                </div>
+                                <div class="meter-bar-track">
+                                    <div class="meter-bar-fill" id="dash-unit2-bar" style="width: 0%; background: #8b5cf6;"></div>
+                                </div>
+                            </div>
+
+                            <div class="diff-meter-item diff-meter-interactive" onclick="app.filterByTopic('UNIT_3_EXCEPTIONS_THREADS')" title="Click to solve Unit 3 challenges (8 total)">
+                                <div class="diff-meter-labels">
+                                    <span class="diff-title" style="color: #f59e0b;">📗 Unit 3: Exceptions &amp; Multithreading <span class="diff-action-hint">Practice →</span></span>
+                                    <span class="diff-count" id="dash-unit3-count">0 / 8 (0%)</span>
+                                </div>
+                                <div class="meter-bar-track">
+                                    <div class="meter-bar-fill" id="dash-unit3-bar" style="width: 0%; background: #f59e0b;"></div>
+                                </div>
+                            </div>
+
+                            <div class="diff-meter-item diff-meter-interactive" onclick="app.filterByTopic('UNIT_4_IO_GENERICS_STRINGS')" title="Click to solve Unit 4 challenges (8 total)">
+                                <div class="diff-meter-labels">
+                                    <span class="diff-title" style="color: #10b981;">📕 Unit 4: Strings, Generics &amp; Collections <span class="diff-action-hint">Practice →</span></span>
+                                    <span class="diff-count" id="dash-unit4-count">0 / 8 (0%)</span>
+                                </div>
+                                <div class="meter-bar-track">
+                                    <div class="meter-bar-fill" id="dash-unit4-bar" style="width: 0%; background: #10b981;"></div>
+                                </div>
+                            </div>
+
+                            <div class="diff-meter-item diff-meter-interactive" onclick="app.filterByTopic('UNIT_5_GUI_JDBC')" title="Click to solve Unit 5 challenges (8 total)">
+                                <div class="diff-meter-labels">
+                                    <span class="diff-title" style="color: #ec4899;">📓 Unit 5: GUI Programming &amp; JDBC <span class="diff-action-hint">Practice →</span></span>
+                                    <span class="diff-count" id="dash-unit5-count">0 / 8 (0%)</span>
+                                </div>
+                                <div class="meter-bar-track">
+                                    <div class="meter-bar-fill" id="dash-unit5-bar" style="width: 0%; background: #ec4899;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Compatibility hidden elements -->
+                        <div style="display: none;">
+                            <span id="dash-easy-count"></span>
+                            <span id="dash-medium-count"></span>
+                            <span id="dash-hard-count"></span>
+                            <div id="dash-easy-bar"></div>
+                            <div id="dash-medium-bar"></div>
+                            <div id="dash-hard-bar"></div>
+                        </div>
+
+                        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 2px 0;">
+
+                        <!-- Topic Mastery Matrix -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <h4 style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Algorithmic Topic Mastery</h4>
+                                <span style="font-size: 11px; color: var(--text-muted);">6 Topics Active</span>
+                            </div>
+                            <div class="topic-mastery-grid" id="dash-topic-grid">
+                                <div class="topic-pill mastered" onclick="app.filterByTopic('ARRAYS')" style="cursor: pointer;" title="Click to view Arrays & Matrices problems">
+                                    <span class="topic-name">Arrays &amp; Matrices</span>
+                                    <span class="topic-score">100% ↗</span>
+                                </div>
+                                <div class="topic-pill mastered" onclick="app.filterByTopic('STRINGS')" style="cursor: pointer;" title="Click to view String problems">
+                                    <span class="topic-name">String Algorithms</span>
+                                    <span class="topic-score">100% ↗</span>
+                                </div>
+                                <div class="topic-pill mastered" onclick="app.filterByTopic('MATHEMATICS')" style="cursor: pointer;" title="Click to view Math problems">
+                                    <span class="topic-name">Mathematics</span>
+                                    <span class="topic-score">100% ↗</span>
+                                </div>
+                                <div class="topic-pill in-progress" onclick="app.filterByTopic('DYNAMIC_PROGRAMMING')" style="cursor: pointer;" title="Click to view DP problems">
+                                    <span class="topic-name">Dynamic Programming</span>
+                                    <span class="topic-score">50% ↗</span>
+                                </div>
+                                <div class="topic-pill mastered" onclick="app.filterByTopic('STACK')" style="cursor: pointer;" title="Click to view Stack problems">
+                                    <span class="topic-name">Stack &amp; Queue</span>
+                                    <span class="topic-score">100% ↗</span>
+                                </div>
+                                <div class="topic-pill mastered" onclick="app.filterByTopic('SEARCHING')" style="cursor: pointer;" title="Click to view Searching problems">
+                                    <span class="topic-name">Binary Search</span>
+                                    <span class="topic-score">100% ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Live Contest Arena & Daily Challenge -->
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <!-- Live Contest Card -->
+                        <div class="card live-contest-card">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                        <span class="badge badge-live">LIVE NOW</span>
+                                        <span style="font-size: 11px; color: var(--text-muted);">CONTEST #05</span>
+                                    </div>
+                                    <h3 style="font-size: 16px; font-weight: 800; color: #fff;" id="dash-live-battle-title">⚔️ Java Speed Battle #05</h3>
+                                </div>
+                                <div class="contest-timer-pill">
+                                    <span class="timer-icon">⏱️</span>
+                                    <span id="dash-contest-timer">42m 15s</span>
+                                </div>
+                            </div>
+
+                            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 14px;">
+                                Fast-paced algorithmic battle! Solve 3 problems against campus peers. Top 3 gain +150 bonus XP and leaderboard badges.
+                            </p>
+
+                            <div class="contest-specs-row">
+                                <div class="spec-item">
+                                    <span class="spec-label">Problems</span>
+                                    <span class="spec-val">3 Tasks</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Language</span>
+                                    <span class="spec-val">Java 21</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Prize</span>
+                                    <span class="spec-val" style="color: var(--accent-gold);">+150 XP</span>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" onclick="app.navigateTo('battles')" style="width: 100%; justify-content: center; padding: 10px;">
+                                ⚔️ Enter Live Battle Arena
+                            </button>
+                        </div>
+
+                        <!-- Daily Recommended Challenge -->
+                        <div class="card daily-quest-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span style="font-size: 18px;">🎯</span>
+                                    <span style="font-size: 12px; font-weight: 700; color: #38bdf8; letter-spacing: 0.5px;">DAILY RECOMMENDED QUEST</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span class="badge badge-accent" id="dash-daily-badge">FEATURED • 200 PTS</span>
+                                    <button class="dash-quest-reroll-btn" onclick="app.rerollDailyQuest()" title="Reroll another challenge">
+                                        <span>🎲</span> Reroll
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 style="font-size: 14px; font-weight: 800; margin-bottom: 4px;" id="dash-daily-title">Longest Substring Without Repeating Characters</h4>
+                            <p style="font-size: 11px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5;" id="dash-daily-desc">
+                                Master sliding window techniques. Find the length of the longest substring with all unique characters.
+                            </p>
+
+                            <button class="btn btn-secondary" id="dash-daily-btn" style="width: 100%; justify-content: center; font-size: 12px; font-weight: 600;">
+                                💻 Solve Challenge in Java Editor
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Academic Notices & Campus Directives -->
+                <div class="card" id="student-announcements-card" style="margin-top: 16px; border-left: 4px solid #f59e0b;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 22px;">📢</span>
+                            <div>
+                                <h3 class="card-title" style="margin: 0; font-size: 15px;">Campus Announcements &amp; Evaluation Directives</h3>
+                                <p style="font-size: 11px; color: var(--text-secondary); margin: 0;">Official notices broadcasted by Platform Director &amp; Academic Evaluators</p>
+                            </div>
+                        </div>
+                        <span class="badge badge-gold" id="student-announcements-count-badge">Live Broadcasts Active</span>
+                    </div>
+
+                    <!-- Interactive Announcement Filter Pills -->
+                    <div class="notice-filter-pills">
+                        <button class="notice-filter-btn active" onclick="app.filterAnnouncements('ALL', this)">All Broadcasts</button>
+                        <button class="notice-filter-btn" onclick="app.filterAnnouncements('PINNED', this)">📌 Pinned Only</button>
+                        <button class="notice-filter-btn" onclick="app.filterAnnouncements('HIGH', this)">🚨 High Priority</button>
+                    </div>
+
+                    <div id="student-announcements-feed" style="display: flex; flex-direction: column; gap: 10px;">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Instructor Personalized Evaluations & Feedback -->
+                <div class="card" id="student-feedback-card" style="margin-top: 16px; border-left: 4px solid #10b981;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 22px;">💬</span>
+                            <div>
+                                <h3 class="card-title" style="margin: 0; font-size: 15px;">Academic Evaluation &amp; Instructor Feedback</h3>
+                                <p style="font-size: 11px; color: var(--text-secondary); margin: 0;">Direct feedback on code submissions and algorithmic performance</p>
+                            </div>
+                        </div>
+                        <span class="badge badge-blue">Evaluated by Prof. Alexander Wright</span>
+                    </div>
+                    <div id="student-feedback-feed" style="display: flex; flex-direction: column; gap: 8px;">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Unlocked Achievements Showcase -->
+                <div class="card" style="margin-top: 16px; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                        <div>
+                            <h3 class="card-title" style="margin-bottom: 2px;">Coder Milestones &amp; Badges</h3>
+                            <p style="font-size: 11px; color: var(--text-secondary);">Earn badges by solving problems, winning battles, and writing optimized code</p>
+                        </div>
+                        <button class="btn btn-secondary" onclick="app.navigateTo('performance')" style="font-size: 11px;">
+                            View All Badges →
+                        </button>
+                    </div>
+
+                    <div class="dash-badges-row" id="dash-badges-container">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1B. ACADEMIC EXAMINATIONS & ASSIGNMENTS FULL PORTAL -->
+            <section id="view-assignments" class="view-section">
+                <div class="dashboard-header">
+                    <div>
+                        <div class="dash-welcome-tag" style="background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.35); color: #c084fc;">
+                            <span class="live-dot" style="background: #a855f7; box-shadow: 0 0 8px #a855f7;"></span> ACADEMIC CURRICULUM PORTAL
+                        </div>
+                        <h1 class="heading-large">Assigned Examinations &amp; Practical Lab Coursework</h1>
+                        <p class="subheading">Timed proctored examinations, algorithmic assignments, and coursework challenges assigned to your account.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <button class="btn btn-primary" onclick="app.openAssignOnlineModal()" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none; font-weight: 700; box-shadow: 0 0 18px rgba(99, 102, 241, 0.4); padding: 8px 18px; display: flex; align-items: center; gap: 6px;">
+                            <span style="font-size: 14px;">⚡</span> Assign Online to Every Student
+                        </button>
+                        <button class="btn btn-secondary" onclick="app.loadAssignments()">
+                            <span>🔄</span> Refresh Assignments
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Assignment Filter Tabs -->
+                <div class="problem-filter-bar" style="margin-bottom: 20px;">
+                    <div class="filter-group">
+                        <button class="filter-chip active" onclick="app.filterAssignmentView('ALL', this)">All Items</button>
+                        <button class="filter-chip" onclick="app.filterAssignmentView('EXAM', this)">🎓 Formal Exams</button>
+                        <button class="filter-chip" onclick="app.filterAssignmentView('ASSIGNMENT', this)">📄 Lab Assignments</button>
+                        <button class="filter-chip" onclick="app.filterAssignmentView('COMPLETED', this)">✅ Completed</button>
+                    </div>
+                </div>
+
+                <div id="assignments-full-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px;">
+                    <!-- Rendered by JS -->
+                </div>
+            </section>
+
+            <!-- 2. PRACTICE PROBLEMS VIEW -->
+            <section id="view-practice" class="view-section">
+                <div style="margin-bottom: 24px;">
+                    <h1 class="heading-large">CSE201: Java Programming Practice Arena</h1>
+                    <p class="subheading">Master Object-Oriented Programming using Java with challenges mapped directly to the official syllabus across all 5 units.</p>
+                </div>
+
+                <!-- Interactive Topic Filter Pills & Surprise Me -->
+                <div class="difficulty-pills-bar" id="practice-topic-pills">
+                    <button class="diff-filter-pill active" onclick="app.quickFilterTopic('All Categories', this)">All Challenges (40)</button>
+                    <button class="diff-filter-pill" onclick="app.quickFilterTopic('UNIT_1_OOPS', this)">Unit 1: OOPs</button>
+                    <button class="diff-filter-pill" onclick="app.quickFilterTopic('UNIT_2_INHERITANCE', this)">Unit 2: Inheritance</button>
+                    <button class="diff-filter-pill" onclick="app.quickFilterTopic('UNIT_3_EXCEPTIONS_THREADS', this)">Unit 3: Exceptions/Threads</button>
+                    <button class="diff-filter-pill" onclick="app.quickFilterTopic('UNIT_4_IO_GENERICS_STRINGS', this)">Unit 4: Strings/Generics</button>
+                    <button class="diff-filter-pill" onclick="app.quickFilterTopic('UNIT_5_GUI_JDBC', this)">Unit 5: GUI/JDBC</button>
+                    <button class="btn-random-pick" onclick="app.pickRandomProblem()">🎲 Surprise Me / Random</button>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="card filters-bar" style="padding: 14px 20px;">
+                    <input type="text" id="practice-search-input" class="input-control" placeholder="🔍 Search problems by title, unit, or concept..." style="max-width: 320px;">
+                    <select id="practice-category-select" class="input-control" style="max-width: 250px;">
+                        <option value="All Categories">All Syllabus Units</option>
+                        <option value="UNIT_1_OOPS">Unit 1: Intro to OOP &amp; Java</option>
+                        <option value="UNIT_2_INHERITANCE">Unit 2: Polymorphism &amp; Inheritance</option>
+                        <option value="UNIT_3_EXCEPTIONS_THREADS">Unit 3: Exceptions &amp; Multithreading</option>
+                        <option value="UNIT_4_IO_GENERICS_STRINGS">Unit 4: I/O, Generics &amp; Strings</option>
+                        <option value="UNIT_5_GUI_JDBC">Unit 5: GUI Programming &amp; JDBC</option>
+                    </select>
+                    <select id="practice-points-select" class="input-control" style="max-width: 160px;">
+                        <option value="All Points">All Points</option>
+                        <option value="100">100 Points</option>
+                        <option value="150">150 Points</option>
+                        <option value="200">200 Points</option>
+                    </select>
+                    <input type="hidden" id="practice-difficulty-select" value="All Difficulties">
+                    <select id="practice-status-select" class="input-control" style="max-width: 140px;">
+                        <option value="All Status">All Status</option>
+                        <option value="Solved">Solved</option>
+                        <option value="Unsolved">Unsolved</option>
+                    </select>
+                    <button class="btn btn-secondary" id="practice-reset-btn">Reset</button>
+                    <span id="practice-count-label" style="font-size: 12px; color: var(--text-secondary); margin-left: auto;">Showing 28 challenges</span>
+                </div>
+
+                <!-- Problem Cards Grid -->
+                <div class="problems-grid" id="practice-problems-grid">
+                    <!-- Populated via JS -->
+                </div>
+            </section>
+
+            <!-- 3. CODE EDITOR / ARENA VIEW (Pixel-Perfect CodeChef Split-Screen Layout) -->
+            <section id="view-editor" class="view-section">
+                <!-- 1. Top Header Bar (42px) - Exact Order from Screenshot 1 & 2 -->
+                <div class="arena-header-bar">
+                    <div class="arena-bar-left">
+                        <button class="arena-icon-btn" onclick="app.backFromEditor()" title="Back to Problems / Dashboard">←</button>
+                        <button class="arena-icon-btn" onclick="app.navigateTo('practice')" title="Problems List">☰</button>
+                        <div class="arena-diff-badge" id="editor-badge-diff-pill" style="border-color: rgba(99, 102, 241, 0.4); color: #818cf8; background: rgba(99, 102, 241, 0.12);">
+                            <span>⚡</span> Topic: <span id="editor-badge-diff-text">Core Java</span>
+                        </div>
+                        <button class="arena-icon-btn" onclick="app.toggleTheme()" id="btn-arena-theme" title="Toggle Light / Dark Mode">☀️</button>
+                        <button class="arena-icon-btn" onclick="app.toggleBookmarkCurrentProblem()" id="btn-arena-bookmark" title="Bookmark Problem">🔖</button>
+                    </div>
+                    <div class="arena-bar-right">
+                        <button class="arena-nav-btn" onclick="app.prevProblemInModule()" id="btn-arena-prev-prob">‹ Prev</button>
+                        <div class="arena-capsules-track" id="arena-module-capsules">
+                            <!-- Dynamic capsule progress indicators -->
+                        </div>
+                        <button class="arena-nav-btn" onclick="app.nextProblemInModule()" id="btn-arena-next-prob">Next module ›</button>
+                    </div>
+                </div>
+
+                <!-- Optional Exam Banner (only displayed during exams) -->
+                <div id="editor-assignment-banner" style="display: none; background: #1e1b4b; border-bottom: 1px solid #4338ca; padding: 6px 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span id="editor-assignment-icon" style="font-size: 16px;">🎓</span>
+                        <span id="editor-assignment-title" style="font-weight: 700; font-size: 12px; color: #c7d2fe;">Exam</span>
+                        <span class="badge badge-purple" id="editor-assignment-badge" style="font-size: 9px;">ACTIVE</span>
+                        <span id="editor-assignment-meta" style="font-size: 11px; color: #94a3b8;"></span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div class="battle-timer-display" id="editor-exam-timer" style="font-size: 11px; padding: 2px 8px;">
+                            <span>⏱️</span> <span id="editor-exam-timer-val">45:00</span>
+                        </div>
+                        <span class="badge badge-easy" id="editor-exam-progress-badge" style="font-size: 10px;">0 / 2 Solved</span>
+                        <div id="editor-exam-questions-ribbon" style="display: flex; gap: 4px;"></div>
+                        <button class="btn btn-secondary" onclick="app.finishExam()" id="btn-finish-exam" style="font-size: 10px; padding: 3px 8px;">Finish Exam 🏁</button>
+                    </div>
+                </div>
+
+                <!-- 2. 50/50 Split Arena Body -->
+                <div class="arena-split-body" id="arena-split-body">
+                    <!-- Left Pane: Problem Statement / Submissions / Help (50%) -->
+                    <div class="arena-left-pane" id="arena-left-pane">
+                        <div class="arena-tabs-header">
+                            <button class="arena-tab-btn active" id="arena-tab-btn-statement" onclick="app.switchArenaTab('statement')">Statement</button>
+                            <button class="arena-tab-btn" id="arena-tab-btn-submissions" onclick="app.switchArenaTab('submissions')">Submissions</button>
+                            <button class="arena-tab-btn" id="arena-tab-btn-help" onclick="app.switchArenaTab('help')">Help</button>
+                        </div>
+
+                        <!-- Statement Tab Content (Exact Order from Screenshot 1 & 2) -->
+                        <div class="arena-tab-pane active" id="arena-pane-statement">
+                            <h1 class="arena-prob-title" id="editor-prob-title">Problem Title</h1>
+                            <div class="arena-desc-text" id="editor-desc"></div>
+
+                            <div class="arena-section-title">Input Format</div>
+                            <div class="arena-desc-text" id="editor-input-format"></div>
+
+                            <div class="arena-section-title">Output Format</div>
+                            <div class="arena-desc-text" id="editor-output-format"></div>
+
+                            <div class="arena-section-title">Constraints</div>
+                            <pre class="arena-code-block" id="editor-constraints"></pre>
+
+                            <!-- Hidden compatibility elements -->
+                            <div style="display: none;">
+                                <span id="editor-badge-diff">EASY</span>
+                                <span id="editor-badge-cat">ARRAYS</span>
+                                <span id="editor-badge-pts">100 pts</span>
+                                <span id="editor-badge-time">2000 ms</span>
+                                <pre id="editor-sample-in"></pre>
+                                <pre id="editor-sample-out"></pre>
+                            </div>
+                        </div>
+
+                        <!-- Submissions Tab Content -->
+                        <div class="arena-tab-pane" id="arena-pane-submissions" style="display: none;">
+                            <div class="arena-subs-container" id="arena-problem-subs-list">
+                                <p style="color: var(--text-muted); font-size: 13px; text-align: center; padding: 24px;">Loading submissions...</p>
+                            </div>
+                        </div>
+
+                        <!-- Help Tab Content -->
+                        <div class="arena-tab-pane" id="arena-pane-help" style="display: none;">
+                            <div class="arena-help-container" id="arena-problem-help-content">
+                                <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--accent-blue);">💡 Hints &amp; Approach</h3>
+                                <p id="arena-help-hint-text" style="font-size: 13px; line-height: 1.6; color: var(--text-secondary);"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Splitter Resizer Handle -->
+                    <div class="arena-resizer" id="arena-resizer" title="Drag to resize panes">
+                        <span class="arena-grip-dots">⁝</span>
+                    </div>
+
+                    <!-- Right Pane: Editor + Custom Input + Output (50% Width) -->
+                    <div class="arena-right-pane" id="arena-right-pane">
+                        <!-- 1. Top Editor Bar (Pinned) -->
+                        <div class="arena-editor-bar">
+                            <select class="arena-lang-select" id="editor-lang-select" onchange="app.changeArenaLanguage(this.value)">
+                                <option value="java" selected>Java 21</option>
+                                <option value="c">C</option>
+                                <option value="cpp">C++</option>
+                                <option value="python">Python 3</option>
+                            </select>
+
+                            <div style="display: flex; gap: 4px; align-items: center;">
+                                <button class="arena-icon-btn" onclick="app.copyEditorCode()" title="Copy Code">📋</button>
+                                <button class="arena-icon-btn" onclick="app.resetTemplate()" title="Reset to Basic Lines">⚙️</button>
+                                <button class="arena-icon-btn" onclick="app.toggleFullscreenEditor()" id="btn-arena-fullscreen" title="Toggle Fullscreen">⛶</button>
+                            </div>
+                        </div>
+
+                        <!-- 2. Single Unified Scroll Body (Matching Screenshot 1 & 2) -->
+                        <div class="arena-right-scroll-body" id="arena-right-scroll-body">
+                            <!-- Code Editor with Synchronized Line Numbers -->
+                            <div class="arena-editor-container" id="editor-wrapper">
+                                <div class="arena-line-gutter" id="editor-line-gutter">1</div>
+                                <textarea class="arena-code-textarea" id="editor-code-input" spellcheck="false" placeholder="// Enter your code here...&#10;// Type your solution and click 'Run' to compile and test"></textarea>
+                            </div>
+
+                            <!-- Test against Custom Input (Exact Order from Screenshot 1 & 2) -->
+                            <div class="arena-custom-input-box">
+                                <div class="arena-custom-input-header" onclick="app.toggleCustomInputDrawer()">
+                                    <span>Test against Custom Input</span>
+                                    <span id="arena-custom-input-chevron" class="arena-chevron">▲</span>
+                                </div>
+                                <div id="arena-custom-input-body" class="arena-custom-input-body">
+                                    <textarea class="arena-custom-input-area" id="custom-stdin-input" placeholder="Enter custom test input here..."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Stacked Output Display: Result Banner, Input, Output & Error Location -->
+                            <div class="arena-output-section" id="arena-output-display" style="display: none;">
+                                <!-- Prominent Status Banner (OK vs Type of Error & Location) -->
+                                <div class="arena-result-banner" id="arena-result-banner">
+                                    <span class="arena-banner-icon" id="arena-banner-icon">✅</span>
+                                    <div style="flex: 1;">
+                                        <div class="arena-banner-title" id="arena-banner-title">STATUS: OK (Correct Answer)</div>
+                                        <div class="arena-banner-sub" id="arena-banner-sub">Your code compiled and executed with correct output.</div>
+                                    </div>
+                                    <span class="arena-error-line-badge" id="arena-error-line-badge" style="display: none;"></span>
+                                </div>
+
+                                <!-- Sample Input -->
+                                <div class="arena-output-group" id="arena-sample-input-group">
+                                    <div class="arena-output-label" id="arena-in-label">Sample Input</div>
+                                    <pre class="arena-output-pre" id="arena-sample-in-val"></pre>
+                                </div>
+
+                                <!-- Your Output -->
+                                <div class="arena-output-group" id="arena-your-output-group">
+                                    <div class="arena-output-label" id="arena-out-label">Your Output</div>
+                                    <pre class="arena-output-pre" id="arena-user-out-val"></pre>
+                                </div>
+
+                                <!-- Expected Output (Visible on Output Mismatch so user can compare) -->
+                                <div class="arena-output-group" id="arena-expected-output-group" style="display: none;">
+                                    <div class="arena-output-label" style="color: #4ade80;">Expected Output (Correct Output)</div>
+                                    <pre class="arena-output-pre arena-expected-pre" id="arena-expected-out-val"></pre>
+                                </div>
+
+                                <!-- Automated Test Cases Details (when Submit is pressed) -->
+                                <div id="editor-results-container" style="display: none;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Hidden compatibility elements for existing JS -->
+                        <pre id="custom-stdout-output" style="display: none;"></pre>
+                        <span id="integrated-compiler-status" style="display: none;"></span>
+                        <span id="integrated-compiler-time" style="display: none;"></span>
+
+                        <!-- 3. Pinned Bottom Action Footer: Run, Submit, Next (Exact Order from Screenshot 1 & 2) -->
+                        <div class="arena-action-footer">
+                            <div class="arena-footer-left">
+                                <span id="editor-eval-status" class="arena-status-text">Ready</span>
+                                <span id="arena-exec-time" style="font-size: 11px; color: #94a3b8; margin-left: 6px;"></span>
+                            </div>
+                            <div class="arena-footer-btn-group">
+                                <button class="btn-arena-run" id="btn-arena-run" onclick="app.runArenaCode()" title="Run Code (Ctrl+Enter)">
+                                    <span style="color: #2563eb; font-size: 12px; margin-right: 3px;">▸</span> Run
+                                </button>
+                                <button class="btn-arena-submit" id="btn-arena-submit" onclick="app.submitArenaCode()" title="Submit Solution (Ctrl+Shift+Enter)">Submit</button>
+                                <button class="btn-arena-next" id="btn-arena-next" onclick="app.nextProblemInModule()" title="Next problem">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. CODING BATTLES VIEW -->
+            <section id="view-battles" class="view-section">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                    <div>
+                        <h1 class="heading-large" id="battle-name-header">Java Speed Battle #05</h1>
+                        <p class="subheading">Timed competitive coding battle. Solve challenges fast to climb the contest ranks.</p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <select id="battle-select-dropdown" class="input-control" style="width: 220px;">
+                            <!-- Populated via JS -->
+                        </select>
+                        <div class="battle-timer-display" id="battle-countdown-timer">45:00</div>
+                    </div>
+                </div>
+
+                <!-- Problem Ribbon -->
+                <div class="card" style="margin-bottom: 20px; padding: 14px 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="font-size: 13px;">Contest Challenges:</strong>
+                        <span id="battle-solved-count" style="font-size: 12px; color: var(--text-secondary);">Solved: 2 / 5</span>
+                    </div>
+                    <div class="battle-ribbon" id="battle-ribbon-container">
+                        <!-- Problem buttons inserted here -->
+                    </div>
+                </div>
+
+                <!-- Live Rivals Activity Ticker -->
+                <div class="rivals-ticker-box" id="battle-rivals-ticker" style="margin-bottom: 20px;">
+                    <span style="font-size: 13px;">📡</span>
+                    <span style="font-weight: 700; color: var(--accent-blue); font-size: 11px;">RIVALS LIVE FEED:</span>
+                    <span id="battle-rivals-text" style="color: var(--text-secondary); font-size: 11.5px;">Waiting for competitor events...</span>
+                </div>
+
+                <!-- Live Battle Scoreboard -->
+                <div class="card">
+                    <h3 class="card-title">Live Contest Scoreboard</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Competitor</th>
+                                <th>Total Score</th>
+                                <th>Problems Solved</th>
+                            </tr>
+                        </thead>
+                        <tbody id="battle-scoreboard-body">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 5. LEADERBOARD VIEW -->
+            <section id="view-leaderboard" class="view-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <div>
+                        <h1 class="heading-large">Global Competitor Leaderboard</h1>
+                        <p class="subheading">DSA Dynamic Rankings powered by Custom QuickSort &amp; Max-Heap algorithms.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <input type="text" id="leaderboard-search" class="input-control" placeholder="Search student..." style="width: 200px;">
+                        <select id="leaderboard-mode-select" class="input-control" style="width: 200px;">
+                            <option value="all">All Students (QuickSort)</option>
+                            <option value="top5">Top 5 (Max-Heap)</option>
+                            <option value="top10">Top 10 (Max-Heap)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Top 3 Podium -->
+                <div class="podium-container" id="podium-root">
+                    <div class="podium-col podium-second">
+                        <div class="podium-crown">🥈</div>
+                        <strong id="podium-2-name" style="font-size: 15px;">Ananya</strong>
+                        <span id="podium-2-pts" style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">400 pts</span>
+                        <div class="podium-block">
+                            <span style="font-size: 20px; font-weight: 800; color: #8b949e;">#2</span>
+                        </div>
+                    </div>
+
+                    <div class="podium-col podium-first">
+                        <div class="podium-crown">🥇</div>
+                        <strong id="podium-1-name" style="font-size: 16px; color: var(--accent-gold);">Rahul</strong>
+                        <span id="podium-1-pts" style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">510 pts</span>
+                        <div class="podium-block">
+                            <span style="font-size: 26px; font-weight: 800; color: #d29922;">#1</span>
+                        </div>
+                    </div>
+
+                    <div class="podium-col podium-third">
+                        <div class="podium-crown">🥉</div>
+                        <strong id="podium-3-name" style="font-size: 15px;">Uday</strong>
+                        <span id="podium-3-pts" style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">100 pts</span>
+                        <div class="podium-block">
+                            <span style="font-size: 18px; font-weight: 800; color: #b87333;">#3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Table -->
+                <div class="card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Student Coder</th>
+                                <th>Total Points</th>
+                                <th>Solved</th>
+                                <th>Success Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-table-body">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 6. PERFORMANCE & BADGES VIEW -->
+            <section id="view-performance" class="view-section">
+                <div style="margin-bottom: 24px;">
+                    <h1 class="heading-large">My Performance &amp; Badges</h1>
+                    <p class="subheading">Track your solved statistics, accuracy percentage, and unlocked achievements.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                    <div class="card" style="text-align: center;">
+                        <span class="stat-label">Total Attempted</span>
+                        <div class="stat-value" id="perf-attempted">5</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <span class="stat-label">Total Solved</span>
+                        <div class="stat-value" style="color: var(--accent-green);" id="perf-solved">5</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <span class="stat-label">Success Rate</span>
+                        <div class="stat-value" style="color: var(--accent-gold);" id="perf-rate">100%</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 24px;">
+                    <h3 class="card-title">Course Unit Mastery</h3>
+                    <div style="display: flex; gap: 20px;">
+                        <div style="flex: 1; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.4); padding: 14px; border-radius: var(--radius-sm); text-align: center;">
+                            <span style="font-size: 12px; color: #60a5fa; font-weight: 700;">UNITS 1 &amp; 2</span>
+                            <div style="font-size: 22px; font-weight: 800; color: #fff;" id="perf-easy-count">4</div>
+                        </div>
+                        <div style="flex: 1; background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.4); padding: 14px; border-radius: var(--radius-sm); text-align: center;">
+                            <span style="font-size: 12px; color: #c084fc; font-weight: 700;">UNITS 3 &amp; 4</span>
+                            <div style="font-size: 22px; font-weight: 800; color: #fff;" id="perf-med-count">1</div>
+                        </div>
+                        <div style="flex: 1; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.4); padding: 14px; border-radius: var(--radius-sm); text-align: center;">
+                            <span style="font-size: 12px; color: #34d399; font-weight: 700;">UNIT 5 &amp; JDBC</span>
+                            <div style="font-size: 22px; font-weight: 800; color: #fff;" id="perf-hard-count">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges Grid -->
+                <div class="card">
+                    <h3 class="card-title">Unlocked Achievements</h3>
+                    <div class="badges-grid" id="perf-badges-grid">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 8. PROJECT SHOWCASE & VIVA PRESENTATION DEFENSE SUITE
+                 ============================================================= -->
+            <section id="view-viva" class="view-section">
+                <!-- Viva Hero Header -->
+                <div class="viva-hero-card">
+                    <div class="viva-hero-top">
+                        <div class="viva-badge-top">
+                            <span class="live-dot" style="background: #f59e0b; box-shadow: 0 0 10px #f59e0b;"></span>
+                            ACADEMIC DEFENSE &amp; TECHNICAL ARCHITECTURE SUITE • CSE201
+                        </div>
+                        <div class="viva-hero-title-row">
+                            <div>
+                                <h1 class="viva-hero-title">Platform Architecture &amp; Viva Defense Suite</h1>
+                                <p class="viva-hero-subtitle">Interactive DSA Algorithm Visualizer • Live Microsecond Benchmarks • OOP &amp; Design Patterns • Sandbox Security Watchdog • Examiner Q&amp;A Bank</p>
+                            </div>
+                            <div class="viva-hero-actions">
+                                <button class="btn btn-viva-primary" onclick="app.startVivaTour()">
+                                    <span>▶️</span> Start Guided Viva Tour
+                                </button>
+                                <button class="btn btn-viva-secondary" onclick="app.runFullVivaBenchmarks()">
+                                    <span>⚡</span> Run All Benchmarks
+                                </button>
+                                <a href="/dossier.pdf" target="_blank" class="btn btn-secondary" title="View or Download PDF Defense Dossier" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                                    <span>📥</span> Defense PDF
+                                </a>
+                                <button class="btn btn-secondary" onclick="app.printVivaDossier()" title="Open clean printable defense dossier">
+                                    <span>🖨️</span> Print Dossier
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.loadVivaMetrics()" title="Refresh telemetry from server">
+                                    <span>🔄</span> Refresh
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Telemetry KPI Strip -->
+                    <div class="viva-telemetry-grid">
+                        <div class="viva-kpi-card">
+                            <span class="viva-kpi-icon">📚</span>
+                            <div>
+                                <div class="viva-kpi-val" id="viva-kpi-problems">28 Programs</div>
+                                <div class="viva-kpi-label">Syllabus Curriculum (Mod 1-6)</div>
+                            </div>
+                        </div>
+                        <div class="viva-kpi-card">
+                            <span class="viva-kpi-icon">🧮</span>
+                            <div>
+                                <div class="viva-kpi-val">5 Custom DSA</div>
+                                <div class="viva-kpi-label">Heap, QuickSort, Stack, Queue, Hash</div>
+                            </div>
+                        </div>
+                        <div class="viva-kpi-card">
+                            <span class="viva-kpi-icon">🛡️</span>
+                            <div>
+                                <div class="viva-kpi-val" id="viva-kpi-failover" style="color: #10b981;">Dual DB Failover</div>
+                                <div class="viva-kpi-label">MySQL 3306 ➔ H2 Embedded</div>
+                            </div>
+                        </div>
+                        <div class="viva-kpi-card">
+                            <span class="viva-kpi-icon">⏱️</span>
+                            <div>
+                                <div class="viva-kpi-val">2000 ms</div>
+                                <div class="viva-kpi-label">Watchdog Infinite Loop Killer</div>
+                            </div>
+                        </div>
+                        <div class="viva-kpi-card">
+                            <span class="viva-kpi-icon">✅</span>
+                            <div>
+                                <div class="viva-kpi-val" style="color: #38bdf8;">15 / 15 Passed</div>
+                                <div class="viva-kpi-label">Automated JUnit 5 Test Suite</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viva Sub-Navigation Segmented Tabs -->
+                <div class="viva-subtabs-row">
+                    <button class="viva-tab-btn active" data-viva-tab="dsa-lab" onclick="app.switchVivaTab('dsa-lab')">
+                        <span class="tab-icon">🧮</span> 1. Interactive DSA Lab
+                    </button>
+                    <button class="viva-tab-btn" data-viva-tab="benchmarks" onclick="app.switchVivaTab('benchmarks')">
+                        <span class="tab-icon">⚡</span> 2. Real-Time Benchmarks
+                    </button>
+                    <button class="viva-tab-btn" data-viva-tab="architecture" onclick="app.switchVivaTab('architecture')">
+                        <span class="tab-icon">🏛️</span> 3. OOP &amp; Architecture
+                    </button>
+                    <button class="viva-tab-btn" data-viva-tab="security" onclick="app.switchVivaTab('security')">
+                        <span class="tab-icon">🛡️</span> 4. Sandbox &amp; Security
+                    </button>
+                    <button class="viva-tab-btn" data-viva-tab="qa-bank" onclick="app.switchVivaTab('qa-bank')">
+                        <span class="tab-icon">🎓</span> 5. Examiner Viva Q&amp;A Bank
+                        <span class="viva-pill-counter">20 Qs</span>
+                    </button>
+                </div>
+
+                <!-- =========================================================
+                     TAB 1: INTERACTIVE DSA LAB
+                     ========================================================= -->
+                <div id="viva-tab-dsa-lab" class="viva-tab-content active">
+                    <!-- DSA Selector Pills -->
+                    <div class="viva-dsa-pill-selector">
+                        <button class="dsa-pill active" onclick="app.selectDsaDemo('heap')">
+                            <strong>LeaderboardHeap</strong>
+                            <span>Max-Heap Top-K • O(K log N)</span>
+                        </button>
+                        <button class="dsa-pill" onclick="app.selectDsaDemo('quicksort')">
+                            <strong>QuickSortRanking</strong>
+                            <span>Median-of-Three Partition • O(N log N)</span>
+                        </button>
+                        <button class="dsa-pill" onclick="app.selectDsaDemo('stack')">
+                            <strong>EditorUndoStack</strong>
+                            <span>Array LIFO Stack • O(1) Push/Pop</span>
+                        </button>
+                        <button class="dsa-pill" onclick="app.selectDsaDemo('queue')">
+                            <strong>SubmissionQueue</strong>
+                            <span>FIFO Worker Queue • Asynchronous</span>
+                        </button>
+                        <button class="dsa-pill" onclick="app.selectDsaDemo('search')">
+                            <strong>ProblemSearchIndex</strong>
+                            <span>HashMap O(1) + Binary Search O(log N)</span>
+                        </button>
+                    </div>
+
+                    <!-- DSA Demo Panels -->
+
+                    <!-- 1. MAX-HEAP PANEL -->
+                    <div id="dsa-panel-heap" class="dsa-interactive-panel active">
+                        <div class="dsa-panel-header">
+                            <div>
+                                <h3 class="dsa-panel-title">🏆 LeaderboardHeap (Custom Binary Max-Heap)</h3>
+                                <p class="dsa-panel-desc">Powers the global and contest leaderboards. Extracts the Top-K student competitors in <code>O(K log N)</code> time without sorting all <code>N</code> students.</p>
+                            </div>
+                            <div class="dsa-complexity-badge">
+                                <div><span class="cmplx-label">Insert:</span> <code>O(log N)</code></div>
+                                <div><span class="cmplx-label">Extract Max:</span> <code>O(log N)</code></div>
+                                <div><span class="cmplx-label">Top-K:</span> <code>O(K log N)</code></div>
+                                <div><span class="cmplx-label">Space:</span> <code>O(N) Array</code></div>
+                            </div>
+                        </div>
+
+                        <!-- Heap Controls -->
+                        <div class="dsa-control-toolbar">
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <input type="number" id="heap-input-score" placeholder="Score (e.g. 850)" value="780" class="input-control" style="width: 140px; padding: 6px 10px;">
+                                <input type="text" id="heap-input-name" placeholder="Coder Name" value="Aarav" class="input-control" style="width: 130px; padding: 6px 10px;">
+                                <button class="btn btn-primary" onclick="app.heapInsert()">
+                                    <span>➕</span> Insert Coder
+                                </button>
+                            </div>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-secondary" onclick="app.heapExtractMax()">
+                                    <span>👑</span> Extract Top-1 (Max)
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.heapExtractTopK(3)">
+                                    <span>🥇</span> Extract Top-3 Leaders
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.heapReset()">
+                                    <span>🔄</span> Reset Heap
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Heap Visualizer Canvas/Tree -->
+                        <div class="heap-visual-box">
+                            <div class="heap-view-mode-title">BINARY TREE REPRESENTATION (MAX-HEAP PROPERTY: PARENT &gt;= CHILDREN)</div>
+                            <div class="heap-tree-canvas" id="heap-tree-container">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+
+                            <div class="heap-array-title">UNDERLYING 0-INDEXED ARRAY BUFFER STORAGE:</div>
+                            <div class="heap-array-strip" id="heap-array-container">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+
+                            <div class="heap-formula-strip">
+                                <span>📐 <strong>Index Arithmetic:</strong></span>
+                                <code>Parent(i) = ⌊(i - 1) / 2⌋</code>
+                                <code>LeftChild(i) = 2i + 1</code>
+                                <code>RightChild(i) = 2i + 2</code>
+                            </div>
+                        </div>
+
+                        <div class="dsa-explanation-card">
+                            <strong>💡 Viva Defense Insight:</strong> When an examiner asks <em>"Why not just write <code>SELECT * FROM users ORDER BY points DESC</code> or sort the ArrayList?"</em>, explain that sorting an array takes <strong>O(N log N)</strong>. For a competition with 50,000 students where we only need the Top-10 winners, the <strong>LeaderboardHeap</strong> extracts them in <strong>O(10 log 50000) ≈ 160 operations</strong> instead of <strong>50000 × 16 ≈ 800,000 operations</strong> — an incredible <strong>5,000x computational efficiency gain</strong>.
+                        </div>
+                    </div>
+
+                    <!-- 2. QUICKSORT PANEL -->
+                    <div id="dsa-panel-quicksort" class="dsa-interactive-panel" style="display: none;">
+                        <div class="dsa-panel-header">
+                            <div>
+                                <h3 class="dsa-panel-title">⚡ QuickSortRanking (Median-of-Three Partitioning)</h3>
+                                <p class="dsa-panel-desc">Custom sorting implementation with anti-degenerate pivot selection. Guarantees balanced partitions and prevents <code>O(N²)</code> worst-case degradation on pre-sorted arrays.</p>
+                            </div>
+                            <div class="dsa-complexity-badge">
+                                <div><span class="cmplx-label">Average:</span> <code>O(N log N)</code></div>
+                                <div><span class="cmplx-label">Worst-Case:</span> <code>O(N log N)*</code></div>
+                                <div><span class="cmplx-label">Space:</span> <code>O(log N)</code></div>
+                                <div><span class="cmplx-label">Tie-Breaker:</span> <code>Lexicographic</code></div>
+                            </div>
+                        </div>
+
+                        <div class="dsa-control-toolbar">
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-primary" onclick="app.qsStepMedian()">
+                                    <span>🎯</span> 1. Pick Median-of-Three Pivot
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.qsStepPartition()">
+                                    <span>🔀</span> 2. Step Partition
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.qsRunFull()">
+                                    <span>▶️</span> Run Full Animated QuickSort
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.qsReset()">
+                                    <span>🔄</span> Shuffle Ratings Array
+                                </button>
+                            </div>
+                            <span id="qs-step-status" style="font-size: 12px; color: #a5b4fc; margin-left: auto;">Ready to partition array</span>
+                        </div>
+
+                        <!-- QuickSort Bars Visualizer -->
+                        <div class="qs-visual-container">
+                            <div class="qs-bars-row" id="qs-bars-container">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                            <div class="qs-legend-row">
+                                <span class="qs-legend-item"><span class="qs-legend-dot dot-normal"></span> Normal Element</span>
+                                <span class="qs-legend-item"><span class="qs-legend-dot dot-candidate"></span> Median Candidate (Left, Mid, Right)</span>
+                                <span class="qs-legend-item"><span class="qs-legend-dot dot-pivot"></span> Chosen Pivot</span>
+                                <span class="qs-legend-item"><span class="qs-legend-dot dot-sorted"></span> Partitioned / Sorted</span>
+                            </div>
+                        </div>
+
+                        <div class="dsa-explanation-card">
+                            <strong>💡 Viva Defense Insight:</strong> Standard QuickSort picks either the first or last element as pivot. If a student list is already sorted or reverse-sorted, the partition is maximally unbalanced (<code>1</code> and <code>N-1</code> elements), causing the call-stack to degrade to <strong>O(N²)</strong> and potentially crash with a <code>StackOverflowError</code>. Our <strong>median-of-three strategy</strong> samples <code>arr[low]</code>, <code>arr[mid]</code>, and <code>arr[high]</code> and picks their median, statistically guaranteeing balanced recursive trees!
+                        </div>
+                    </div>
+
+                    <!-- 3. EDITOR UNDO STACK PANEL -->
+                    <div id="dsa-panel-stack" class="dsa-interactive-panel" style="display: none;">
+                        <div class="dsa-panel-header">
+                            <div>
+                                <h3 class="dsa-panel-title">🥞 EditorUndoStack (Generic LIFO Array Stack)</h3>
+                                <p class="dsa-panel-desc">Powers the code editor's Ctrl+Z (Undo) and Ctrl+Y (Redo) operations. Implemented with a custom resizable array with <code>O(1)</code> push, pop, and peek operations.</p>
+                            </div>
+                            <div class="dsa-complexity-badge">
+                                <div><span class="cmplx-label">Push:</span> <code>O(1)</code></div>
+                                <div><span class="cmplx-label">Pop:</span> <code>O(1)</code></div>
+                                <div><span class="cmplx-label">Peek:</span> <code>O(1)</code></div>
+                                <div><span class="cmplx-label">Capacity:</span> <code>2x Resizing</code></div>
+                            </div>
+                        </div>
+
+                        <div class="dsa-control-toolbar">
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <input type="text" id="stack-input-text" placeholder="Code edit snapshot" value="int sum = a + b;" class="input-control" style="width: 200px; padding: 6px 10px;">
+                                <button class="btn btn-primary" onclick="app.stackPush()">
+                                    <span>📥</span> Push Snapshot
+                                </button>
+                            </div>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-secondary" onclick="app.stackPop()">
+                                    <span>↩️</span> Undo (Pop)
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.stackRedo()">
+                                    <span>↪️</span> Redo
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.stackClear()">
+                                    <span>🔄</span> Clear Stack
+                                </button>
+                            </div>
+                            <div style="margin-left: auto; font-size: 12px; color: var(--text-secondary);">
+                                Stack Size: <strong id="stack-size-val" style="color: #fff;">3</strong> / Capacity: <strong id="stack-cap-val" style="color: #f59e0b;">10</strong>
+                            </div>
+                        </div>
+
+                        <!-- Stack Visual Container -->
+                        <div class="stack-visual-box">
+                            <div class="stack-column" id="stack-items-container">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                            <div class="stack-meta-info">
+                                <div class="stack-pointer-badge"><span>TOP POINTER ➔</span> <code id="stack-top-ptr">Index 2</code></div>
+                                <div class="stack-pointer-badge"><span>BASE ➔</span> <code>Index 0 (Bottom of Stack)</code></div>
+                                <div style="margin-top: 14px; font-size: 11.5px; color: var(--text-muted); line-height: 1.6;">
+                                    When the stack fills its initial capacity (10), it dynamically allocates a new contiguous block of <code>2 * capacity</code> (20), achieving amortized <strong>O(1)</strong> push operations without memory fragmentation.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. SUBMISSION QUEUE PANEL -->
+                    <div id="dsa-panel-queue" class="dsa-interactive-panel" style="display: none;">
+                        <div class="dsa-panel-header">
+                            <div>
+                                <h3 class="dsa-panel-title">📬 SubmissionQueue (Thread-Safe Concurrent FIFO Buffer)</h3>
+                                <p class="dsa-panel-desc">Buffers incoming student code submissions. Protects CPU and memory by processing compilation requests serially via a background worker thread.</p>
+                            </div>
+                            <div class="dsa-complexity-badge">
+                                <div><span class="cmplx-label">Enqueue:</span> <code>O(1)</code></div>
+                                <div><span class="cmplx-label">Dequeue:</span> <code>O(1)</code></div>
+                                <div><span class="cmplx-label">Threading:</span> <code>Synchronized</code></div>
+                                <div><span class="cmplx-label">Fairness:</span> <code>Strict FIFO</code></div>
+                            </div>
+                        </div>
+
+                        <div class="dsa-control-toolbar">
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-primary" onclick="app.queueEnqueue()">
+                                    <span>➕</span> Enqueue Student Submission
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.queueProcessNext()">
+                                    <span>⚙️</span> Worker Process Next (Dequeue)
+                                </button>
+                                <button class="btn btn-secondary" onclick="app.queueReset()">
+                                    <span>🔄</span> Reset Queue
+                                </button>
+                            </div>
+                            <div style="margin-left: auto; font-size: 12px; color: #10b981;">
+                                <span class="blinking-dot green-dot" style="display: inline-block; vertical-align: middle;"></span> Worker Thread: <strong>Active &amp; Ready</strong>
+                            </div>
+                        </div>
+
+                        <!-- Queue Visual Conveyor Belt -->
+                        <div class="queue-conveyor-belt" id="queue-items-container">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+
+                        <div class="dsa-explanation-card">
+                            <strong>💡 Viva Defense Insight:</strong> During a live coding battle with 100 students submitting code simultaneously, spawning 100 compiler processes at the same instant would exhaust system RAM and freeze the server. The <strong>SubmissionQueue</strong> guarantees thread-safe decoupling: submissions are enqueued in <strong>O(1)</strong> time while workers pull from the head in <strong>strict FIFO order</strong>.
+                        </div>
+                    </div>
+
+                    <!-- 5. SEARCH INDEX PANEL -->
+                    <div id="dsa-panel-search" class="dsa-interactive-panel" style="display: none;">
+                        <div class="dsa-panel-header">
+                            <div>
+                                <h3 class="dsa-panel-title">🔍 ProblemSearchIndex (Two-Tier Hash &amp; Binary Search)</h3>
+                                <p class="dsa-panel-desc">Multi-attribute problem lookup. Uses an <code>O(1)</code> HashMap bucket for categories and an <code>O(log N)</code> Binary Search over sorted points ranges.</p>
+                            </div>
+                            <div class="dsa-complexity-badge">
+                                <div><span class="cmplx-label">Category:</span> <code>O(1) Map</code></div>
+                                <div><span class="cmplx-label">Points Range:</span> <code>O(log N)</code></div>
+                                <div><span class="cmplx-label">Curriculum:</span> <code>28 Problems</code></div>
+                            </div>
+                        </div>
+
+                        <div class="dsa-control-toolbar">
+                            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                                <label style="font-size: 12px; color: var(--text-secondary);">Category:</label>
+                                <select id="search-demo-category" class="input-control" style="width: 140px; padding: 6px 8px;" onchange="app.runSearchIndexDemo()">
+                                    <option value="ALL">All Categories</option>
+                                    <option value="MATHEMATICS">MATHEMATICS</option>
+                                    <option value="STRINGS">STRINGS</option>
+                                    <option value="ARRAYS">ARRAYS</option>
+                                    <option value="SEARCHING">SEARCHING</option>
+                                    <option value="SORTING">SORTING</option>
+                                    <option value="RECURSION">RECURSION</option>
+                                </select>
+
+                                <label style="font-size: 12px; color: var(--text-secondary); margin-left: 8px;">Points Tier:</label>
+                                <select id="search-demo-difficulty" class="input-control" style="width: 120px; padding: 6px 8px;" onchange="app.runSearchIndexDemo()">
+                                    <option value="ALL">All Tiers</option>
+                                    <option value="EASY">100 pts</option>
+                                    <option value="MEDIUM">150 pts</option>
+                                    <option value="HARD">200 pts</option>
+                                </select>
+
+                                <button class="btn btn-primary" onclick="app.runSearchIndexDemo()">
+                                    <span>⚡</span> Execute Fast Lookup
+                                </button>
+                            </div>
+                            <span id="search-demo-perf" style="margin-left: auto; font-size: 12px; color: #38bdf8;">Lookup time: &lt; 0.05 ms</span>
+                        </div>
+
+                        <div class="search-results-table-box">
+                            <table class="leaderboard-table" style="font-size: 12px;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Problem Title</th>
+                                        <th>Category (O(1) Map)</th>
+                                        <th>Points Tier</th>
+                                        <th>Points (O(log N) BinSearch)</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="search-results-tbody">
+                                    <!-- Populated dynamically by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     TAB 2: REAL-TIME BENCHMARKS
+                     ========================================================= -->
+                <div id="viva-tab-benchmarks" class="viva-tab-content" style="display: none;">
+                    <div class="benchmark-suite-header">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 4px;">⚡ Live Algorithmic Benchmark Suite</h3>
+                            <p style="font-size: 12px; color: var(--text-secondary);">Direct empirical proof of asymptotic time complexity. Computes real operations and measures execution time in microseconds.</p>
+                        </div>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <label style="font-size: 12px; color: var(--text-muted);">Dataset Scale (N):</label>
+                            <select id="benchmark-size-select" class="input-control" style="width: 130px; padding: 6px 10px;">
+                                <option value="1000">N = 1,000</option>
+                                <option value="10000" selected>N = 10,000</option>
+                                <option value="50000">N = 50,000</option>
+                            </select>
+                            <button class="btn btn-viva-primary" onclick="app.runFullVivaBenchmarks()">
+                                <span>🚀</span> Execute Live Benchmark Test
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3 Benchmark Cards Grid -->
+                    <div class="benchmark-cards-grid">
+                        <!-- Benchmark 1: Heap vs Full Sort -->
+                        <div class="benchmark-card">
+                            <div class="bench-header">
+                                <div>
+                                    <h4 class="bench-title">1. Top-10 Selection: Heap vs Sort</h4>
+                                    <span class="bench-sub">LeaderboardHeap O(K log N) vs Array.sort() O(N log N)</span>
+                                </div>
+                                <span class="badge badge-gold" id="bench-speedup-heap">~8.4x Faster</span>
+                            </div>
+                            <div class="bench-bars-container">
+                                <div class="bench-bar-group">
+                                    <div class="bench-bar-label">
+                                        <span>LeaderboardHeap (Custom Max-Heap)</span>
+                                        <strong id="bench-heap-ms" style="color: #10b981;">0.42 ms</strong>
+                                    </div>
+                                    <div class="bench-bar-track">
+                                        <div class="bench-bar-fill" id="bench-heap-bar" style="width: 14%; background: #10b981;"></div>
+                                    </div>
+                                </div>
+                                <div class="bench-bar-group">
+                                    <div class="bench-bar-label">
+                                        <span>Full Array QuickSort (All N items)</span>
+                                        <strong id="bench-sort-ms" style="color: #f59e0b;">3.51 ms</strong>
+                                    </div>
+                                    <div class="bench-bar-track">
+                                        <div class="bench-bar-fill" id="bench-sort-bar" style="width: 82%; background: #f59e0b;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bench-verdict-note" id="bench-heap-note">
+                                ✔ LeaderboardHeap only maintains a Top-K structure, extracting the 10 leaders without wasting CPU sorting the remaining 9,990 items.
+                            </div>
+                        </div>
+
+                        <!-- Benchmark 2: QuickSort Median-of-3 vs Standard -->
+                        <div class="benchmark-card">
+                            <div class="bench-header">
+                                <div>
+                                    <h4 class="bench-title">2. QuickSort (Median-of-3) Stability</h4>
+                                    <span class="bench-sub">Anti-Degenerate Pivot vs Quadratic O(N²) Degradation</span>
+                                </div>
+                                <span class="badge badge-easy" id="bench-speedup-qs">Balanced Partition</span>
+                            </div>
+                            <div class="bench-bars-container">
+                                <div class="bench-bar-group">
+                                    <div class="bench-bar-label">
+                                        <span>QuickSort with Median-of-Three</span>
+                                        <strong id="bench-qs-ms" style="color: #38bdf8;">1.18 ms</strong>
+                                    </div>
+                                    <div class="bench-bar-track">
+                                        <div class="bench-bar-fill" id="bench-qs-bar" style="width: 18%; background: #38bdf8;"></div>
+                                    </div>
+                                </div>
+                                <div class="bench-bar-group">
+                                    <div class="bench-bar-label">
+                                        <span>Degenerate First-Element Pivot (Sorted Input)</span>
+                                        <strong id="bench-deg-ms" style="color: #f43f5e;">18.40 ms</strong>
+                                    </div>
+                                    <div class="bench-bar-track">
+                                        <div class="bench-bar-fill" id="bench-deg-bar" style="width: 95%; background: #f43f5e;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bench-verdict-note">
+                                ✔ Median-of-three prevents standard QuickSort from degenerating to O(N²) worst-case when ranking already-graded student submissions.
+                            </div>
+                        </div>
+
+                        <!-- Benchmark 3: ProblemSearchIndex Lookup -->
+                        <div class="benchmark-card">
+                            <div class="bench-header">
+                                <div>
+                                    <h4 class="bench-title">3. Lookup: HashMap vs Binary vs Linear</h4>
+                                    <span class="bench-sub">1,000 Queries on Search Index</span>
+                                </div>
+                                <span class="badge badge-live" id="bench-speedup-search">120x Speedup</span>
+                            </div>
+                            <div class="bench-bars-container">
+                                <div class="bench-bar-group">
+                                    <div class="bench-bar-label">
+                                        <span>HashMap Lookup O(1)</span>
+                                        <strong id="bench-hash-ms" style="color: #a855f7;">0.08 ms</strong>
+                                    </div>
+                                    <div class="bench-bar-track">
+                                        <div class="bench-bar-fill" id="bench-hash-bar" style="width: 5%; background: #a855f7;"></div>
+                                    </div>
+                                </div>
+                                <div class="bench-bar-group">
+                                    <div class="bench-bar-label">
+                                        <span>Binary Search O(log N)</span>
+                                        <strong id="bench-bin-ms" style="color: #38bdf8;">0.24 ms</strong>
+                                    </div>
+                                    <div class="bench-bar-track">
+                                        <div class="bench-bar-fill" id="bench-bin-bar" style="width: 15%; background: #38bdf8;"></div>
+                                    </div>
+                                </div>
+                                <div class="bench-bar-group">
+                                    <div class="bench-bar-label">
+                                        <span>Naive Linear Scan O(N)</span>
+                                        <strong id="bench-lin-ms" style="color: #f43f5e;">9.60 ms</strong>
+                                    </div>
+                                    <div class="bench-bar-track">
+                                        <div class="bench-bar-fill" id="bench-lin-bar" style="width: 92%; background: #f43f5e;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bench-verdict-note">
+                                ✔ Two-tier indexing filters problems instantaneously even with thousands of problems and tags in the platform repository.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     TAB 3: OOP PILLARS & ARCHITECTURE
+                     ========================================================= -->
+                <div id="viva-tab-architecture" class="viva-tab-content" style="display: none;">
+                    <div class="arch-section-title">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: #fff;">🏛️ Object-Oriented Programming (OOP) Implementation</h3>
+                            <p style="font-size: 12px; color: var(--text-secondary);">Rigorous adherence to core computer science OOP principles in the platform codebase.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4 OOP Pillars Grid -->
+                    <div class="oop-pillars-grid">
+                        <!-- Pillar 1: Abstraction -->
+                        <div class="oop-card">
+                            <div class="oop-header">
+                                <span class="oop-badge">PILLAR 1</span>
+                                <span class="oop-icon">🎭</span>
+                            </div>
+                            <h4 class="oop-title">Abstraction</h4>
+                            <p class="oop-desc">Hides complex internal logic behind clean public interfaces and abstract base contracts.</p>
+                            <div class="oop-code-reference">
+                                <code>public abstract class User { ... }</code>
+                                <code>public interface CodeEvaluator { ... }</code>
+                                <code>public interface ScoreCalculator { ... }</code>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="app.previewJavaSnippet('abstraction')">
+                                👁️ View Java Source
+                            </button>
+                        </div>
+
+                        <!-- Pillar 2: Inheritance -->
+                        <div class="oop-card">
+                            <div class="oop-header">
+                                <span class="oop-badge">PILLAR 2</span>
+                                <span class="oop-icon">🧬</span>
+                            </div>
+                            <h4 class="oop-title">Inheritance</h4>
+                            <p class="oop-desc">Promotes code reusability through a structured hierarchy extending shared user attributes.</p>
+                            <div class="oop-code-reference">
+                                <code>public class Student extends User { ... }</code>
+                                <code>public class Admin extends User { ... }</code>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="app.previewJavaSnippet('inheritance')">
+                                👁️ View Java Source
+                            </button>
+                        </div>
+
+                        <!-- Pillar 3: Polymorphism -->
+                        <div class="oop-card">
+                            <div class="oop-header">
+                                <span class="oop-badge">PILLAR 3</span>
+                                <span class="oop-icon">🔄</span>
+                            </div>
+                            <h4 class="oop-title">Polymorphism</h4>
+                            <p class="oop-desc">Dynamic method dispatch enables interchangeable evaluation engines and custom scoring strategies.</p>
+                            <div class="oop-code-reference">
+                                <code>CodeEvaluator evaluator = new JavaCodeEvaluator();</code>
+                                <code>evaluator.evaluate(submission);</code>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="app.previewJavaSnippet('polymorphism')">
+                                👁️ View Java Source
+                            </button>
+                        </div>
+
+                        <!-- Pillar 4: Encapsulation -->
+                        <div class="oop-card">
+                            <div class="oop-header">
+                                <span class="oop-badge">PILLAR 4</span>
+                                <span class="oop-icon">🔒</span>
+                            </div>
+                            <h4 class="oop-title">Encapsulation</h4>
+                            <p class="oop-desc">Protects internal state with strict private fields, defensive copying, and input validation.</p>
+                            <div class="oop-code-reference">
+                                <code>private final int problemId;</code>
+                                <code>private List&lt;TestCase&gt; testCases;</code>
+                                <code>public List&lt;TestCase&gt; getTestCases() { ... }</code>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="app.previewJavaSnippet('encapsulation')">
+                                👁️ View Java Source
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Design Patterns & Dual Database Failover Simulator -->
+                    <div class="failover-sim-container">
+                        <div class="failover-sim-header">
+                            <div>
+                                <h4 style="font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 2px;">⚡ Dual-Database Auto-Failover Circuit Breaker</h4>
+                                <p style="font-size: 12px; color: var(--text-secondary);">Singleton <code>DatabaseConnection.java</code> seamlessly transitions to Embedded H2 if MySQL is unavailable, ensuring zero presentation crashes.</p>
+                            </div>
+                            <button class="btn btn-secondary" id="btn-toggle-failover-sim" onclick="app.toggleFailoverSim()">
+                                <span id="failover-btn-icon">🔌</span> <span id="failover-btn-text">Simulate MySQL Server Drop</span>
+                            </button>
+                        </div>
+
+                        <div class="failover-diagram-row">
+                            <!-- MySQL Node -->
+                            <div class="db-node-card active" id="node-mysql">
+                                <div class="db-node-icon">🐬</div>
+                                <div class="db-node-title">Primary: MySQL Server</div>
+                                <div class="db-node-url">jdbc:mysql://localhost:3306/coding_battle_db</div>
+                                <span class="db-node-status-tag" id="status-mysql">ACTIVE / CONNECTED</span>
+                            </div>
+
+                            <!-- Connection Bridge -->
+                            <div class="db-bridge-box">
+                                <div class="bridge-arrow" id="bridge-arrow-indicator">➔ AUTOMATIC RETRY ➔</div>
+                                <div class="bridge-label">Singleton Auto-Failover Handler</div>
+                            </div>
+
+                            <!-- Embedded H2 Node -->
+                            <div class="db-node-card standby" id="node-h2">
+                                <div class="db-node-icon">🗄️</div>
+                                <div class="db-node-title">Fallback: Embedded H2 DB</div>
+                                <div class="db-node-url">jdbc:h2:./data/coding_battle_db</div>
+                                <span class="db-node-status-tag" id="status-h2">HOT STANDBY READY</span>
+                            </div>
+                        </div>
+
+                        <!-- Live Failover Console Log -->
+                        <div class="failover-console" id="failover-console-log">
+                            <span class="log-time">[13:50:00]</span> <span class="log-info">DatabaseConnection: Initializing database connection pool...</span><br>
+                            <span class="log-time">[13:50:01]</span> <span class="log-success">DatabaseConnection: Zero-config Embedded H2 synchronized at ./data/coding_battle_db</span><br>
+                            <span class="log-time">[13:50:02]</span> <span class="log-info">DatabaseInitializer: 28 Course Plan problems seeded with full test suites.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     TAB 4: SANDBOX & SECURITY ENGINE
+                     ========================================================= -->
+                <div id="viva-tab-security" class="viva-tab-content" style="display: none;">
+                    <div class="arch-section-title">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: #fff;">🛡️ Sandboxed Java Code Evaluation &amp; Security Pipeline</h3>
+                            <p style="font-size: 12px; color: var(--text-secondary);">Multi-stage defensive architecture isolating student Java bytecode and enforcing hard timeouts.</p>
+                        </div>
+                    </div>
+
+                    <!-- 5-Stage Execution Flow Diagram -->
+                    <div class="sandbox-pipeline-flow">
+                        <div class="pipeline-step">
+                            <div class="step-num">1</div>
+                            <div class="step-title">Source Ingestion</div>
+                            <div class="step-desc">Normalize class name &amp; strip package headers</div>
+                        </div>
+                        <div class="pipeline-arrow">➔</div>
+                        <div class="pipeline-step">
+                            <div class="step-num">2</div>
+                            <div class="step-title">Security Scanner</div>
+                            <div class="step-desc">Regex filter for Runtime, ProcessBuilder, Reflection</div>
+                        </div>
+                        <div class="pipeline-arrow">➔</div>
+                        <div class="pipeline-step">
+                            <div class="step-num">3</div>
+                            <div class="step-title">Dynamic Compilation</div>
+                            <div class="step-desc">javax.tools.JavaCompiler with javac fallback</div>
+                        </div>
+                        <div class="pipeline-arrow">➔</div>
+                        <div class="pipeline-step">
+                            <div class="step-num">4</div>
+                            <div class="step-title">Watchdog Sandbox</div>
+                            <div class="step-desc">Isolated subprocess with 2000ms SIGKILL watchdog</div>
+                        </div>
+                        <div class="pipeline-arrow">➔</div>
+                        <div class="pipeline-step">
+                            <div class="step-num">5</div>
+                            <div class="step-title">Output Diff Engine</div>
+                            <div class="step-desc">Normalized \r\n vs \n whitespace evaluation</div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Live Sandbox Security Tester -->
+                    <div class="security-tester-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                            <div>
+                                <h4 style="font-size: 15px; font-weight: 800; color: #fff;">Live Interactive Security Policy Validator</h4>
+                                <span style="font-size: 12px; color: var(--text-secondary);">Test malicious or exploitative code snippets against our defensive rules:</span>
+                            </div>
+                            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                                <button class="btn btn-secondary btn-sm" onclick="app.setSecuritySnippet('runtime')">Runtime.getRuntime()</button>
+                                <button class="btn btn-secondary btn-sm" onclick="app.setSecuritySnippet('processbuilder')">ProcessBuilder</button>
+                                <button class="btn btn-secondary btn-sm" onclick="app.setSecuritySnippet('systemexit')">System.exit(0)</button>
+                                <button class="btn btn-secondary btn-sm" onclick="app.setSecuritySnippet('infiniteloop')">Infinite Loop</button>
+                                <button class="btn btn-secondary btn-sm" onclick="app.setSecuritySnippet('clean')">Safe Solution</button>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 12px;">
+                            <textarea id="security-test-editor" class="code-textarea" style="height: 120px; font-size: 12.5px; width: 100%; border-radius: 8px;" spellcheck="false">public class Solution {
+    public static void main(String[] args) {
+        // Attempting forbidden host system call:
+        Runtime.getRuntime().exec("calc.exe");
+    }
+}</textarea>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <button class="btn btn-viva-primary" onclick="app.runSecurityCheck()">
+                                <span>🛡️</span> Test Sandbox Defense
+                            </button>
+                            <span id="security-check-status" style="font-size: 12px; color: var(--text-muted);">Click to analyze snippet against sandbox policies</span>
+                        </div>
+
+                        <div id="security-result-box" class="security-result-box" style="display: none; margin-top: 14px;">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     TAB 5: EXAMINER VIVA Q&A MASTER BANK
+                     ========================================================= -->
+                <div id="viva-tab-qa-bank" class="viva-tab-content" style="display: none;">
+                    <div class="viva-qa-header">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 4px;">🎓 Examiner Viva Q&amp;A Master Bank</h3>
+                            <p style="font-size: 12px; color: var(--text-secondary);">20 textbook-accurate answers to the most frequent questions asked by university evaluators and external examiners.</p>
+                        </div>
+                        <div class="qa-search-box">
+                            <input type="text" id="qa-search-input" placeholder="🔍 Search questions (e.g. heap, quicksort, failover, oop, watchdog)..." class="input-control" oninput="app.filterVivaQA()" style="width: 340px; padding: 7px 12px;">
+                        </div>
+                    </div>
+
+                    <!-- Topic Filter Chips -->
+                    <div class="qa-filter-chips">
+                        <button class="filter-chip active" onclick="app.filterQaTopic('ALL')">All Questions (20)</button>
+                        <button class="filter-chip" onclick="app.filterQaTopic('DSA')">DSA Algorithms (6)</button>
+                        <button class="filter-chip" onclick="app.filterQaTopic('OOP')">OOP &amp; Java 21 (5)</button>
+                        <button class="filter-chip" onclick="app.filterQaTopic('DATABASE')">Database &amp; Failover (4)</button>
+                        <button class="filter-chip" onclick="app.filterQaTopic('SANDBOX')">Sandbox &amp; Watchdog (5)</button>
+                    </div>
+
+                    <!-- Collapsible Q&A List -->
+                    <div class="viva-qa-accordion" id="viva-qa-list">
+                        <!-- Populated dynamically by JS with 20 comprehensive questions -->
+                    </div>
+                </div>
+            </section>
+
+                        
+        </main>
+    </div>
+
+    <!-- =============================================================
+         AUTHENTICATION MODAL
+         ============================================================= -->
+    <div class="modal-backdrop" id="auth-modal">
+        <div class="modal-dialog">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 36px; margin-bottom: 6px;">⚡</div>
+                <h2 style="font-size: 20px; font-weight: 800;">Sign in to Coding Battle</h2>
+                <p style="font-size: 12px; color: var(--text-secondary);">Enter your account credentials or pick demo role</p>
+            </div>
+
+            <!-- Demo Quick Fill Buttons -->
+            <div style="display: flex; gap: 8px; margin-bottom: 18px;">
+                <button class="btn btn-secondary" id="demo-student-btn" style="flex: 1; font-size: 11px;">👤 Student (rahul)</button>
+                <button class="btn btn-secondary" id="demo-admin-btn" style="flex: 1; font-size: 11px;">🛡️ Admin (admin)</button>
+            </div>
+
+            <form id="auth-form" style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                    <label style="font-size: 11px; font-weight: 600; color: var(--text-secondary);">USERNAME</label>
+                    <input type="text" id="auth-username" class="input-control" placeholder="Username" required>
+                </div>
+                <div>
+                    <label style="font-size: 11px; font-weight: 600; color: var(--text-secondary);">PASSWORD</label>
+                    <input type="password" id="auth-password" class="input-control" placeholder="Password" required>
+                </div>
+                <div id="auth-error-msg" style="font-size: 12px; color: var(--accent-red); display: none;"></div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 6px; padding: 10px;">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =============================================================
+         STUDENT SUBMISSION SOLUTION CODE INSPECTION MODAL
+         ============================================================= -->
+    <div class="modal-backdrop" id="admin-code-modal">
+        <div class="modal-dialog" style="width: 820px; max-width: 95vw; max-height: 88vh; display: flex; flex-direction: column; text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); margin-bottom: 12px;">
+                <div>
+                    <h3 id="code-modal-title" style="font-size: 18px; font-weight: 800; margin: 0; color: var(--text-primary);">Solution Source Code</h3>
+                    <div id="code-modal-meta" style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Submission Details</div>
+                </div>
+                <button type="button" class="btn-close-oauth" onclick="document.getElementById('admin-code-modal').classList.remove('active')" style="position: static;">✕</button>
+            </div>
+            <div style="padding: 10px 14px; background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 8px; display: flex; gap: 14px; align-items: center; margin-bottom: 12px; flex-wrap: wrap;">
+                <span id="code-modal-verdict" class="badge badge-easy">ACCEPTED</span>
+                <span id="code-modal-score" style="font-size: 12px; color: var(--accent-green); font-weight: 700;">Score: 100 pts</span>
+                <span id="code-modal-runtime" style="font-size: 12px; color: var(--accent-blue); font-family: var(--font-code);">Runtime: 24 ms</span>
+                <button class="btn btn-primary" id="btn-load-sub-into-editor" style="margin-left: auto; font-size: 11px; padding: 4px 12px;">
+                    💻 Open in Editor
+                </button>
+            </div>
+            <div style="flex: 1; overflow-y: auto; max-height: 52vh;">
+                <pre id="code-modal-source" style="margin: 0; font-family: var(--font-code); font-size: 13.5px; line-height: 1.6; color: #38bdf8; background: #060911; padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); overflow-x: auto; white-space: pre-wrap;"></pre>
+            </div>
+            <div style="display: flex; justify-content: flex-end; margin-top: 14px;">
+                <button class="btn btn-secondary" onclick="document.getElementById('admin-code-modal').classList.remove('active')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================
+         BADGE SHOWCASE & MILESTONE DETAILS MODAL
+         ============================================================= -->
+    <div class="modal-backdrop" id="badge-detail-modal">
+        <div class="modal-dialog" style="width: 440px; max-width: 95vw; text-align: center;">
+            <div style="display: flex; justify-content: flex-end;">
+                <button type="button" class="btn-close-oauth" onclick="document.getElementById('badge-detail-modal').classList.remove('active')" style="position: static;">✕</button>
+            </div>
+            <div id="badge-modal-icon" style="font-size: 58px; margin-bottom: 8px; filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.45));">🏆</div>
+            <h3 id="badge-modal-title" style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 4px;">Milestone Badge</h3>
+            <div style="margin-bottom: 12px;">
+                <span id="badge-modal-status" class="badge badge-gold" style="font-size: 11px;">UNLOCKED • 150 XP</span>
+            </div>
+            <p id="badge-modal-desc" style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Conquered algorithmic milestones with superior runtime efficiency.</p>
+            <div style="background: rgba(13, 17, 23, 0.8); border: 1px solid var(--border-color); border-radius: 10px; padding: 14px; margin-bottom: 18px; text-align: left; font-size: 12px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                    <span style="color: var(--text-muted);">Criteria:</span>
+                    <strong style="color: #fff;" id="badge-modal-criteria">Solve 5+ Challenges</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: var(--text-muted);">XP Reward:</span>
+                    <strong style="color: var(--accent-gold);" id="badge-modal-bonus">+150 XP Awarded</strong>
+                </div>
+            </div>
+            <button class="btn btn-secondary" onclick="document.getElementById('badge-detail-modal').classList.remove('active')" style="width: 100%; justify-content: center;">Close Showcase</button>
+        </div>
+    </div>
+
+    <!-- Canvas for Celebratory Confetti & Particle Explosion -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div class="shortcuts-overlay" id="shortcuts-modal" style="display: none;" onclick="if(event.target === this) app.closeShortcutsModal()">
+        <div class="shortcuts-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                <h3 style="font-size: 16px; font-weight: 800; color: #fff;">⌨️ Interactive Keyboard Shortcuts</h3>
+                <button class="btn btn-secondary" onclick="app.closeShortcutsModal()" style="padding: 2px 8px; font-size: 12px;">✕</button>
+            </div>
+            <div class="shortcut-row"><span>Run Code (Quick Dry Run)</span><span><kbd>Ctrl</kbd> + <kbd>Enter</kbd></span></div>
+            <div class="shortcut-row"><span>Submit Code (Official Evaluation)</span><span><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd></span></div>
+            <div class="shortcut-row"><span>Indent Code (4 Spaces)</span><span><kbd>Tab</kbd></span></div>
+            <div class="shortcut-row"><span>Undo in Code Editor</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd></span></div>
+            <div class="shortcut-row"><span>Redo in Code Editor</span><span><kbd>Ctrl</kbd> + <kbd>Y</kbd></span></div>
+            <div class="shortcut-row"><span>Toggle Focus Fullscreen</span><span><kbd>Focus Mode Button</kbd></span></div>
+            <div class="shortcut-row"><span>Toggle Sound SFX</span><span><kbd>M</kbd></span></div>
+            <div class="shortcut-row"><span>Close Modals / Overlays</span><span><kbd>Esc</kbd></span></div>
+        </div>
+    </div>
+
+    <!-- =============================================================
+         GUIDED VIVA PRESENTATION TOUR MODAL
+         ============================================================= -->
+    <div class="modal-backdrop" id="viva-tour-modal" style="display: none;">
+        <div class="modal-dialog viva-tour-dialog" style="max-width: 620px; width: 95vw;">
+            <div class="viva-tour-card">
+                <div class="viva-tour-header">
+                    <div class="viva-tour-step-badge">
+                        STEP <span id="viva-tour-step-num">1</span> OF 6 • VIVA PRESENTATION TOUR
+                    </div>
+                    <button class="btn-close-oauth" onclick="app.closeVivaTour()">✕</button>
+                </div>
+                <div class="viva-tour-body">
+                    <div class="viva-tour-icon" id="viva-tour-icon">🎓</div>
+                    <h3 class="viva-tour-title" id="viva-tour-title">Platform Architecture Overview</h3>
+                    <p class="viva-tour-text" id="viva-tour-text">Welcome to the Coding Battle Platform defense tour! Built with Java 21, JavaFX, custom DSA, and dual-mode database failover.</p>
+                    <div class="viva-tour-highlights" id="viva-tour-highlights">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="viva-tour-footer">
+                    <button class="btn btn-secondary" id="viva-tour-prev-btn" onclick="app.prevVivaTourStep()">← Previous</button>
+                    <div class="viva-tour-dots" id="viva-tour-dots">
+                        <!-- 6 dots populated by JS -->
+                    </div>
+                    <button class="btn btn-viva-primary" id="viva-tour-next-btn" onclick="app.nextVivaTourStep()">Next Step →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Java Source Code Preview Modal for OOP Inspector -->
+    <div class="modal-backdrop" id="viva-code-modal" style="display: none;">
+        <div class="modal-dialog" style="max-width: 680px; width: 95vw;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                <h3 style="font-size: 16px; font-weight: 800; color: #fff;" id="viva-code-modal-title">Java OOP Source Inspection</h3>
+                <button class="btn-close-oauth" onclick="document.getElementById('viva-code-modal').style.display = 'none'">✕</button>
+            </div>
+            <pre style="background: #0d1117; border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; font-family: var(--font-code); font-size: 12px; color: #e6edf3; overflow-x: auto; max-height: 400px; line-height: 1.5;" id="viva-code-modal-content"></pre>
+        </div>
+    </div>
+
+    <!-- Real-time Live Task Notification Toast (Direct delivery when Admin schedules task) -->
+    <div id="live-task-toast" class="live-task-toast" style="display: none;">
+        <div class="toast-icon-pulse">🔔</div>
+        <div class="toast-body">
+            <div class="toast-badge-tag">
+                <span class="blink-dot-small"></span> NEW TASK ASSIGNED BY PROFESSOR
+            </div>
+            <strong class="toast-title" id="toast-task-title">Midterm Java Examination</strong>
+            <div class="toast-meta" id="toast-task-meta">Due in 5 days • ⏱️ 60 mins • ⭐ 100 marks</div>
+        </div>
+        <button class="btn btn-primary" id="toast-task-action" style="font-size: 11px; padding: 6px 12px; white-space: nowrap; background: linear-gradient(135deg, #8b5cf6, #ec4899); border: none;">
+            Start 🚀
+        </button>
+        <button class="toast-close-btn" id="toast-task-close" title="Dismiss">✕</button>
+    </div>
+
+    <!-- =============================================================
+         MODAL: ASSIGN ONLINE ASSIGNMENT TO EVERY STUDENT
+         ============================================================= -->
+    <div class="modal-backdrop" id="assign-online-modal">
+        <div class="modal-dialog" style="width: 660px; max-width: 95vw; max-height: 92vh; overflow-y: auto; background: #0b0f17; border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 16px; padding: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.85), 0 0 32px rgba(99, 102, 241, 0.3);">
+            <!-- Modal Header -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #6366f1, #8b5cf6); display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 0 16px rgba(99, 102, 241, 0.5);">
+                        ⚡
+                    </div>
+                    <div>
+                        <h2 style="font-size: 19px; font-weight: 800; color: #ffffff; margin: 0;">Assign Online to Every Student</h2>
+                        <p style="font-size: 12px; color: var(--text-secondary); margin: 3px 0 0 0;">Publish coursework or timed exams sent directly to every student's account in real-time.</p>
+                    </div>
+                </div>
+                <button type="button" class="btn-close-oauth" onclick="app.closeAssignOnlineModal()" style="position: static; font-size: 16px; cursor: pointer;">✕</button>
+            </div>
+
+            <!-- Audience Target Pill Box -->
+            <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #a5b4fc;">
+                        <span>📢</span> <span>TARGET AUDIENCE: CAMPUS-WIDE BROADCAST</span>
+                    </div>
+                    <span class="badge badge-easy" style="font-size: 10px;">8 Active Students</span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    <span style="font-size: 11px; background: rgba(255, 255, 255, 0.07); padding: 2px 8px; border-radius: 6px; color: #e2e8f0;">👤 Rahul (CSE)</span>
+                    <span style="font-size: 11px; background: rgba(255, 255, 255, 0.07); padding: 2px 8px; border-radius: 6px; color: #e2e8f0;">👤 Ananya (AI/DS)</span>
+                    <span style="font-size: 11px; background: rgba(255, 255, 255, 0.07); padding: 2px 8px; border-radius: 6px; color: #e2e8f0;">👤 Kiran (IT)</span>
+                    <span style="font-size: 11px; background: rgba(255, 255, 255, 0.07); padding: 2px 8px; border-radius: 6px; color: #e2e8f0;">👤 Uday (CSE)</span>
+                    <span style="font-size: 11px; background: rgba(255, 255, 255, 0.07); padding: 2px 8px; border-radius: 6px; color: #e2e8f0;">👤 Priya (SE)</span>
+                    <span style="font-size: 11px; background: rgba(255, 255, 255, 0.07); padding: 2px 8px; border-radius: 6px; color: #e2e8f0;">👤 Vikram (CSE)</span>
+                    <span style="font-size: 11px; background: rgba(255, 255, 255, 0.07); padding: 2px 8px; border-radius: 6px; color: #e2e8f0;">👤 Sneha (AI/DS)</span>
+                    <span style="font-size: 11px; background: rgba(255, 255, 255, 0.07); padding: 2px 8px; border-radius: 6px; color: #e2e8f0;">👤 Rohan (CY)</span>
+                </div>
+            </div>
+
+            <!-- Quick Template Presets -->
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
+                    ⚡ 1-Click Fast Presets:
+                </label>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <button type="button" class="btn btn-secondary" onclick="app.fillAssignmentPreset('OOP_LAB')" style="font-size: 11px; padding: 4px 10px;">
+                        📄 Unit 1: Classes &amp; Objects Lab
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="app.fillAssignmentPreset('MIDTERM_EXAM')" style="font-size: 11px; padding: 4px 10px;">
+                        🎓 Midterm Java Exam
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="app.fillAssignmentPreset('EXCEPTION_TEST')" style="font-size: 11px; padding: 4px 10px;">
+                        ⚡ Unit 3: Exception Handling
+                    </button>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="online-assign-task-form" onsubmit="app.submitOnlineAssignment(event)">
+                <div class="form-group" style="margin-bottom: 14px;">
+                    <label class="form-label" style="font-size: 11.5px; font-weight: 700; color: #e2e8f0;">Assignment Title / Topic *</label>
+                    <input type="text" id="online-assign-title" class="input-control" placeholder="e.g. Unit 2: Abstract Classes &amp; Interface Implementations" required style="width: 100%; padding: 10px 12px; font-size: 13px;">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 11.5px; font-weight: 700; color: #e2e8f0;">Assessment Type *</label>
+                        <select id="online-assign-type" class="input-control" style="width: 100%; padding: 9px 12px;">
+                            <option value="ASSIGNMENT">📄 Coursework Lab Assignment</option>
+                            <option value="EXAM">🎓 Timed Proctored Examination</option>
+                            <option value="QUIZ">⚡ Speed Coding Assessment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 11.5px; font-weight: 700; color: #e2e8f0;">Send To Cohort *</label>
+                        <select id="online-assign-target" class="input-control" style="width: 100%; padding: 9px 12px;">
+                            <option value="ALL">👥 Every Student (Campus Broadcast)</option>
+                            <option value="CSE">💻 Computer Science &amp; Eng</option>
+                            <option value="IT">🌐 Information Technology</option>
+                            <option value="AI_DS">🤖 AI &amp; Data Science</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 11.5px; font-weight: 700; color: #e2e8f0;">Due Date &amp; Time *</label>
+                        <input type="datetime-local" id="online-assign-due" class="input-control" required style="width: 100%; padding: 9px 12px;">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 11.5px; font-weight: 700; color: #e2e8f0;">Time Limit (Mins)</label>
+                        <input type="number" id="online-assign-duration" class="input-control" value="60" min="5" max="300" style="width: 100%; padding: 9px 12px;">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 11.5px; font-weight: 700; color: #e2e8f0;">Max Score</label>
+                        <input type="number" id="online-assign-marks" class="input-control" value="100" min="10" max="1000" style="width: 100%; padding: 9px 12px;">
+                    </div>
+                </div>
+
+                <!-- Select Problem(s) -->
+                <div class="form-group" style="margin-bottom: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <label class="form-label" style="font-size: 11.5px; font-weight: 700; color: #e2e8f0; margin: 0;">
+                            Select Coding Problem(s) to Include *
+                        </label>
+                        <span id="online-assign-selected-count" style="font-size: 11px; color: #818cf8; font-weight: 700;">1 Problem Selected</span>
+                    </div>
+                    <div id="online-assign-problems-container" style="max-height: 150px; overflow-y: auto; background: rgba(13, 17, 23, 0.9); border: 1px solid var(--border-color); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 6px;">
+                        <!-- Checkboxes populated via JS -->
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 18px;">
+                    <label class="form-label" style="font-size: 11.5px; font-weight: 700; color: #e2e8f0;">Instructions / Submission Guidelines</label>
+                    <textarea id="online-assign-instructions" class="input-control" rows="2" placeholder="e.g. Ensure all edge cases are handled. Submit before scheduled deadline." style="width: 100%; padding: 8px 12px; font-size: 12px; font-family: inherit;">Submit verified Java 21 solutions before the scheduled deadline. External libraries restricted.</textarea>
+                </div>
+
+                <div id="online-assign-status-alert" style="display: none; padding: 12px; border-radius: 8px; margin-bottom: 14px; font-size: 12.5px;"></div>
+
+                <!-- Footer Buttons -->
+                <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
+                    <button type="button" class="btn btn-secondary" onclick="app.closeAssignOnlineModal()">Cancel</button>
+                    <button type="submit" id="btn-submit-online-assign" class="btn btn-primary" style="background: linear-gradient(135deg, #6366f1, #ec4899); border: none; font-weight: 700; padding: 10px 22px; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);">
+                        <span>🚀</span> Broadcast Assignment to Every Student
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
